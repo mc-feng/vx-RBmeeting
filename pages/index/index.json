@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "vtoast": "../../component/toast/toast"
+  }
 }

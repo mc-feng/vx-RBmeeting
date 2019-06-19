@@ -1,5 +1,9 @@
 <!--index.wxml-->
-<view class="container">
+<view class='header'></view>
+<view class="container"> 
+  <view class='item'>
+    <view class='tiao'>预约</view>
+  </view>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -8,6 +12,7 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto" bindtap='change'>{{motto}}</text>
   </view>
 </view>
+<vtoast flow="true"></vtoast>
