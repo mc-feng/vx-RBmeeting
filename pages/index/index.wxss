@@ -53,3 +53,15 @@
 .usermotto {
   margin-top: 200px;
 }
+.toast{
+  height: 300rpx;
+  width: 550rpx;
+  background: #aaa;
+  margin-left: 100rpx;
+}
+.bottom{
+  width: 200rpx;
+  height: 100rpx;
+  border: 2rpx solid #aaa;
+  border-radius: 4px;
+}

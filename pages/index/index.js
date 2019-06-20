@@ -53,6 +53,18 @@ Page({
     })
   },
   change(){
-    this.data.show = true
+     console.log(this.data.show)
+     this.setData({
+       show :!this.data.show
+     })
+  },
+  onGetShow(e){
+    this.setData({
+      show: !e
+    })
+  },
+  click(){
+    var showTwo = this.selectComponent('#bots');
+    showTwo.showModal()
   }
 })

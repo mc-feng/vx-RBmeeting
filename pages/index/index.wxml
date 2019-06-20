@@ -15,4 +15,8 @@
     <text class="user-motto" bindtap='change'>{{motto}}</text>
   </view>
 </view>
-<vtoast flow="true"></vtoast>
+<view class='bottom' bindtap='click'>点击我跳弹框</view>
+<bottom id='bots'></bottom>
+<vtoast flow="{{show}}" bind:myevent="onGetShow">
+  <view class='toast'></view>
+</vtoast>

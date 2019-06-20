@@ -11,21 +11,13 @@ Component({
   /**
    * 组件的初始数据
    */
-  data: {
-    showDialog: false
-  },
-
   /**
    * 组件的方法列表
    */
   methods: {
      toggleDialog() {
-       this.setData({
-         showDialog: this.properties.flow
-       });
+       console.log(this.properties.flow)
+       this.triggerEvent('myevent', this.properties.flow)
      },
-  },
-  ready: function () {
-    console.log("liuliu组件中的数据:", this.data)
   }
 })
