@@ -10,7 +10,7 @@
 }
 .zan-dialog__container {
   position: fixed;
-  bottom: 600rpx;
+  top: 50%;
   transform: translateY(300%);/* 弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
   transition: all 0.4s ease;
   z-index: 12;

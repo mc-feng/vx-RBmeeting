@@ -17,6 +17,6 @@
 </view>
 <view class='bottom' bindtap='click'>点击我跳弹框</view>
 <bottom id='bots'></bottom>
-<vtoast flow="{{show}}" bind:myevent="onGetShow">
+<vtoast flow="{{show}}" bindtap='change'>
   <view class='toast'></view>
 </vtoast>

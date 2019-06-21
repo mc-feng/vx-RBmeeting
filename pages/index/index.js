@@ -58,11 +58,6 @@ Page({
        show :!this.data.show
      })
   },
-  onGetShow(e){
-    this.setData({
-      show: !e
-    })
-  },
   click(){
     var showTwo = this.selectComponent('#bots');
     showTwo.showModal()
