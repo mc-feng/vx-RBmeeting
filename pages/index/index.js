@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import http from '../../api/api'
 Page({
   data: {
     motto: 'Hello World',
@@ -43,6 +43,14 @@ Page({
         }
       })
     }
+    http.index({
+      data:{
+        id:1
+      },
+      success(res){
+        console.log(res)
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
