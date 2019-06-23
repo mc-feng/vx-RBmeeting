@@ -1,0 +1,14 @@
+<view class="cover" hidden="{{hideModal}}" >
+  <view class="modals-cancel" catchtap="hideModal"></view>
+  <view class="box" width="{{width}}" height="{{height}}" style="width:{{width}};height:{{height}};bottom:{{bottom}}" animation="{{animationData}}">
+    <view class="tips">
+      <view class="tips-box">
+        <icon class="iconfont tips-icon msg-icon" wx:if="{{status==0}}"></icon>
+        <icon class="iconfont tips-icon right-icon" wx:if="{{status==1}}"></icon>      
+        <icon class="iconfont tips-icon wrong-icon" wx:if="{{status==2}}"></icon>
+      </view>
+  </view>
+    <slot></slot>
+  </view>
+  
+</view>

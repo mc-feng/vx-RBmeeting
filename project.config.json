@@ -9,11 +9,12 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
-	"appid": "wxea7a2c3c88e3ad65",
+	"appid": "wx163f390dc08a8531",
 	"projectname": "xiangmu",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -30,13 +31,24 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "预约页面",
+					"pathName": "pages/order/index",
+					"scene": null
+				}
+			]
 		}
 	}
 }

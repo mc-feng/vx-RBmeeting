@@ -1,4 +1,18 @@
 /**app.wxss**/
+@font-face {
+  font-family:'iconfont';
+  src: url('//at.alicdn.com/t/font_1253932_m4vzx9qx0ao.eot');
+  src: url('//at.alicdn.com/t/font_1253932_m4vzx9qx0ao.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1253932_m4vzx9qx0ao.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1253932_m4vzx9qx0ao.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1253932_m4vzx9qx0ao.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1253932_m4vzx9qx0ao.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:'iconfont';
+  font-style:normal;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -8,3 +22,10 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.clearfix:before,.clearfix:after {
+  display: table;
+  content: " "
+}
+.clearfix:after {
+  clear: both
+}

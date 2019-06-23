@@ -7,9 +7,30 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    show:false,
+    array: ['上海', '杭州', '西安', '北京'],
+    index:0,
+    arrays:[
+      { name: '会议室名称1', des:'可容纳8-10人，含投影布',local:'12F'},
+      { name: '会议室名称2', des: '可容纳8-10人，含投影布', local: '12F' },
+      { name: '会议室名称3', des: '可容纳8-10人，含投影布', local: '12F' },
+    ]
   },
   //事件处理函数
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  getMore(){
+    wx.showToast({
+      title: '成功',
+      icon: 'success',
+      duration: 2000
+    })
+  },
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
@@ -50,5 +71,20 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  change(){
+     console.log(this.data.show)
+     this.setData({
+       show :!this.data.show
+     })
+  },
+  onGetShow(e){
+    this.setData({
+      show: !e
+    })
+  },
+  click(){
+    var showTwo = this.selectComponent('#bots');
+    showTwo.showModal()
   }
 })

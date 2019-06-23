@@ -1,5 +1,37 @@
 <!--index.wxml-->
-<view class="container">
+<view class="top">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="choose_Local">
+    <view class="picker">
+      {{array[index]}}
+     <icon class="iconfont local"></icon>
+    </view>
+  </picker>
+</view>
+<view class="content">
+  <view class="title">
+    <i></i>
+    <text>可预约会议室</text>
+  </view>
+  <view class="cont">
+    <scroll-view class="contH" lower-threshold="0" bindscrolltolower="getMore" scroll-y="true">
+      <view class="item clearfix" wx:for="{{arrays}}">
+        <view class="item-left">
+          <image src="../../img/mr.png"></image>
+        </view>
+        <view class="item-right">
+          <text class="item-title">{{item.name}}</text>
+          <text class="item-describe">{{item.des}}</text>
+          <text class="item-local">地址：{{item.local}}</text>
+          <button class="item-order">预约</button>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- <view class="container"> 
+  <view class='item'>
+    <view class='tiao'>预约</view>
+  </view>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -8,6 +40,11 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto" bindtap='change'>{{motto}}</text>
   </view>
 </view>
+<view class='bottom' bindtap='click'>点击我跳弹框</view>
+<bottom id='bots'></bottom>
+<vtoast flow="{{show}}" bind:myevent="onGetShow">
+  <view class='toast'></view>
+</vtoast> -->

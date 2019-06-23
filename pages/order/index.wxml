@@ -1,0 +1,75 @@
+<!--pages/order/index.wxml-->
+<view class="top">
+  <i></i>
+  <text>选择时间（可多选时段）</text>
+  <view class="order-status">
+    <icon class="iconfont order-no order-icon"></icon>
+    <text class="order-no-text">已约满</text>
+  </view>
+  <view class="order-status">
+    <icon class="iconfont order-yes order-icon"></icon>
+    <text class="order-yes-text">可预约</text>
+  </view>
+</view>
+<view class="date">
+  <view class="date-left">
+    <scroll-view class="date-scroll"  scroll-y="true">
+      <view class="date-item" wx:for="{{dayList}}">
+        <text class="date-text">{{item.date}}月{{item.time}}日</text>
+        <text class="time-text">(周三)</text>
+      </view>
+    </scroll-view>
+    <view class="pull-btn">
+      <icon class="iconfont local"></icon>
+    </view>
+  </view>
+  <checkbox-group class="date-right" bindchange="change">
+    <checkbox wx:for="{{arr}}" class="date-right-item {{item.status==0?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}}  " bindtap="{{item.status==0?'choose':''}}" data-index="{{index}}" data-id="{{item.id}}" value="{{item.id}}">
+      <icon class="iconfont order-yes time-dur"></icon>
+      <text>{{item.time}}</text>
+    </checkbox>
+  </checkbox-group>
+</view>
+<view class="meeting">
+  <text>会议主题：</text>
+  <input placeholder="请添加会议主题"></input>
+</view>
+<button class="order-btn" bindtap="click">确认预约</button>
+<cover width='644rpx' height="606rpx" bottom="-606rpx" status="0"  id="bots">
+
+  <view class="msg-box">
+    
+    <form class="msg-form">
+      <text class="tips-title">完善信息</text>
+      <!-- <view class="form-container"> -->
+        <!-- <view class="form-con"> -->
+          <view class="project-item">
+        <view class="project">房间号：</view>
+        <text class="project-value">1501会议室</text>
+      </view>
+      <view class="project-item">
+        <view class="project">姓名：</view>
+        <input placeholder="请输入姓名"></input>
+      </view>
+      <view class="project-item">
+        <view class="project">手机：</view>
+        <input placeholder="请输入手机号码"></input>
+      </view>
+      <view class="project-item">
+        <text class="contact">联系我们： 021-21343523</text>
+        <icon class="iconfont tips-icon phone"></icon>
+      </view>
+        <!-- </view> -->
+        
+      <!-- </view> -->
+      
+      <text class="tips-text">请完善您的信息再进行预约哦</text>
+      <button class="confirm">确认</button>
+    </form>
+  </view>
+
+</cover>
+
+
+
+
