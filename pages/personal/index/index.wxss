@@ -13,10 +13,11 @@ page{
   align-items: center;
 }
 .user{
-  height: 80rpx;
+  display: block;
   width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
-  background: #fff;
+  overflow: hidden;
   box-shadow: 0 8rpx 16rpx 0 rgba(0,0,0,0.17);
   margin-left: 80rpx;
 }
@@ -41,13 +42,13 @@ page{
 }
 /* icon字体 */
 @font-face {
-  font-family: 'iconfont';  /* project id 1253932 */
-  src: url('//at.alicdn.com/t/font_1253932_toumh96jxha.eot');
-  src: url('//at.alicdn.com/t/font_1253932_toumh96jxha.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1253932_toumh96jxha.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1253932_toumh96jxha.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1253932_toumh96jxha.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1253932_toumh96jxha.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 1257227 */
+  src: url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.eot');
+  src: url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family: "iconfont";
@@ -67,35 +68,35 @@ page{
 }
 .right{
   position: absolute;
-  left: 10rpx;
-  top: -10rpx;
-}
-.jingao{
-  position: absolute;
-  top: -90rpx;
+  left: 16rpx;
+  top: -12rpx;
 }
 .jingao::before{
-   content: "\e61e";
-   font-size: 160rpx;
-   color: #F03F24 
+   content: "\e611";
+   font-size: 130rpx;
+   color: #fff 
 }
 .down:before { 
-  content: "\e617";
+  content: "\e60f";
   font-size: 36rpx;
 }
 .rili:before {  
   color: #2B3C6A;
-  content: "\e666";
+  content: "\e60a";
   font-size: 52rpx;
 }
 .bao::before{
   color: #717D9B;
-  content: "\e666";
+  content: "\e604";
   font-size: 36rpx;
 }
 .right::before{
-  content: "\e633";
+  content: "\e60c";
   font-size: 30rpx;
+}
+.quxiao::before{
+  content: "\e60d";
+  font-size: 56rpx;
 }
 .item-font{
   font-size: 34rpx;
@@ -164,7 +165,7 @@ page{
 .yuyue-delate{
   height: 212rpx;
   width: 160rpx;
-  background:red;
+  background:#949494;
   display: flex;
   align-items: center;
   justify-content: center; 
@@ -174,10 +175,19 @@ page{
   border-top-right-radius: 30rpx;
   border-bottom-right-radius:30rpx
 }
+.yuyue-delate-warp{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
 .delate-font{
   font-size: 24rpx;
   color: #FFFFFF;
   margin-left: 26rpx;
+}
+.delate-tuan{
+  font-size: 24rpx;
+  color: #FFFFFF;
 }
 /* 历史记录样式 */
 .his-raduis{
@@ -191,19 +201,19 @@ page{
   right: 40rpx;
   border-radius: 50%
 }
+/* 弹框样式 */
 .toast{
   width: 572rpx;
   background: #FFFFFF;
   border-radius: 18rpx;
-  margin-left: -286rpx;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   position: relative;
-  transform: translateY(-50%)
+  transform: translateY(-50%) translateX(-50%);
 }
 .toast-header{
-  margin-top: 170rpx;
+  margin-top: 100rpx;
   font-size: 36rpx;
   color: #F03F24;
   line-height: 50rpx;
@@ -225,6 +235,22 @@ page{
   width: 460rpx;
   margin-bottom: 56rpx;
 }
+.toast-jin{
+  position: absolute;
+  top: -90rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: #F03F24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toast-content-mid{
+  font-size: 28rpx;
+  font-weight: 600
+}
+/* 弹框按键 */
 button::after {
   border: none;
 }

@@ -1,8 +1,8 @@
 <!--pages/personal/history/history.wxml-->
 <view class='header'>
-  <view class='user'></view>
+  <open-data type="userAvatarUrl" class='user'></open-data>
   <view class='user-font'>
-    <view>Hi！林小丽</view>
+    <view>Hi! <open-data type="userNickName" lang="zh_CN"></open-data></view>
     <view>元气满满的一天又开始了！</view>
   </view>
 </view>

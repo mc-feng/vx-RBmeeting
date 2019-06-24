@@ -1,8 +1,8 @@
 <!--pages/personal/index/index.wxml-->
 <view class='header'>
-  <view class='user'></view>
+  <open-data type="userAvatarUrl" class='user'></open-data>
   <view class='user-font'>
-    <view>Hi！林小丽</view>
+    <view>Hi <open-data type="userNickName" lang="zh_CN"></open-data> </view>
     <view>元气满满的一天又开始了！</view>
   </view>
 </view>
@@ -31,7 +31,12 @@
         </view>
      </view>
      <view class='yuyue-delate' bindtap='show'>
-       <view class='delate-font'>取消预约</view>
+       <view class='delate-font'>
+         <view class='yuyue-delate-warp'>
+           <icon class="iconfont quxiao"/>
+           <view class='delate-tuan'>取消预约</view>
+         </view>
+       </view>
      </view>
    </view>
   </view>
@@ -47,11 +52,13 @@
 <!-- 弹框 -->
 <vtoast flow="{{show}}">
   <view class='toast'>
-    <icon class="iconfont jingao"/>
+    <view class='toast-jin'>  
+     <icon class="iconfont jingao"/>
+    </view>
     <view class='toast-header'>你正在取消预约！</view>
     <view class='toast-content'>
       <view>1504会议室  15F</view>
-      <view>2019年6月19日（周三）</view>
+      <view class='toast-content-mid'>2019年6月19日（周三）</view>
       <view>17:00 ~18:00</view>
     </view>
     <view class='toast-buttun-warp'>

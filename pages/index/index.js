@@ -17,48 +17,36 @@ Page({
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-    http.index({
-      data:{
-        id:1
-      },
-      success(res){
-        console.log(res)
-      }
-    })
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  //页面展示时
+  onShow() {
+    //防止网络延迟获取不到openid
+    var that = this
+    setTimeout(res, 1000)
+    function res() {
+      if (!app.globalData.openId) {
+        wx.login({
+          success: res => {
+            http.info({
+              data: {
+                code: res.code
+              },
+              success(res) {
+                console.log("openid获取失败重新获取")
+                that.globalData.openId = res.data.openid
+              },
+              fail(err) {
+                console.log(err)
+              }
+            })
+            console.log(res)
+            // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          }
+        })
+      } else {
+        console.log("已经获取")
+      }
+    }
   },
   change(){
      console.log(this.data.show)

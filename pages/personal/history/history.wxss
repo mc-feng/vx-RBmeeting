@@ -13,10 +13,11 @@ page{
   align-items: center;
 }
 .user{
-  height: 80rpx;
+  display: block;
   width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
-  background: #fff;
+  overflow: hidden;
   box-shadow: 0 8rpx 16rpx 0 rgba(0,0,0,0.17);
   margin-left: 80rpx;
 }

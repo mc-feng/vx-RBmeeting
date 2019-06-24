@@ -1,7 +1,11 @@
 import { http } from './http'; 
-function index(params) { // 主页
-  http('/index', 'post', params)  // 接口请求的路由地址以及请求方法在此处传递
+function info(params) { // 微信登录
+  http('/wx/info', 'get', params)  // 接口请求的路由地址以及请求方法在此处传递
+}
+function history(params){
+  http('/room/history', 'get', params)
 }
 export default { // 暴露接口
-  index
+  info,
+  history
 }

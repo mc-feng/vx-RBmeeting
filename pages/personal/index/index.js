@@ -1,4 +1,6 @@
 // pages/personal/index/index.js
+const app = getApp()
+import http from '../../../api/api'
 var initdata = function (that) {
   var result = that.data.result
   for (var i = 0; i < result.length; i++) {
@@ -13,16 +15,26 @@ Page({
   data: {
     show:false,
     result:[{},{}],
-    delBtnWidth: 60
+    delBtnWidth: 65
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    http.history({
+      data:{
+        openId: app.globalData.openId,
+        status: 0
+      },
+      success(res){
+        console.log(res)
+      },
+      fail(err){
+        console.log(err)
+      }
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
