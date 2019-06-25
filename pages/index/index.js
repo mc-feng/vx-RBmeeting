@@ -16,6 +16,7 @@ Page({
     city: [],
     index:0,
     haveCity:false,
+    hysList:[],
     arrays:[
       { name: '会议室名称1', des:'可容纳8-10人，含投影布',local:'12F'},
       { name: '会议室名称2', des: '可容纳8-10人，含投影布', local: '12F' },
@@ -84,7 +85,7 @@ Page({
         //   that.data.city.push(res.data[i].city)
         // }
         that.setData({
-          arrays: res.data,
+          hysList: res.data,
           city: that.data.city,
           haveCity:true
         })
