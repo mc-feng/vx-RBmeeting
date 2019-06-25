@@ -5,6 +5,8 @@
     <view>Hi <open-data type="userNickName" lang="zh_CN"></open-data> </view>
     <view>元气满满的一天又开始了！</view>
   </view>
+  <image src="../../../images/personal/headerB.png" class="headerB"></image>
+  <image src="../../../images/personal/headerB.png" class="headerL"></image>
 </view>
 <view class='content'>
   <!-- 预约选项 -->
@@ -18,10 +20,10 @@
     <view class='yuyue-item' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}">
         <view class='yuyue-top'>
           <view class='yuyue-top-font'>
-            <text>1502会议室</text><text>12F</text>
+            <text>{{item.path}}</text><text></text>
           </view>
           <view class='yuyue-top-font2'>
-            <text>6月19日</text><text>（周三）</text><text>10:00---11:30</text>
+            <text>{{item.orderDate}}</text><text>（周三）</text><text>{{item.startTime}}---{{item.endTime}}</text>
           </view>
           <view class='yuyue-state'>预约中</view>
         </view>
@@ -41,7 +43,7 @@
    </view>
   </view>
   <!-- 历史记录 -->
-  <view class='item' bindtap='linkToHis'>
+  <view class='item hisM' bindtap='linkToHis'>
     <icon class="iconfont rili"/>
     <view class='item-font'>历史记录</view>
     <view class='his-raduis'>    

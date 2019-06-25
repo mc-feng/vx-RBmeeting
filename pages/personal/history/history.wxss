@@ -19,14 +19,30 @@ page{
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 8rpx 16rpx 0 rgba(0,0,0,0.17);
-  margin-left: 80rpx;
+  left: 80rpx;
+  position: absolute;
+  z-index: 1
 }
 .user-font{
   font-size: 24rpx;
   color: #000000;
-  margin-left: 40rpx;
+  margin-left: 190rpx;
   font-weight: 600
 }
+.headerB{
+  height: 100rpx;
+  width: 184rpx;
+  position: absolute;
+  left: 0;
+  transform: rotate(180deg)
+}
+.headerL{
+  height: 100rpx;
+  width: 184rpx;
+  position: absolute;
+  right: 0;
+}
+/* 内容 */
 .content{
   width: 694rpx;
 }
@@ -86,4 +102,34 @@ page{
   position: absolute;
   right: -54rpx;
   top: 0
+}
+/* icon字体 */
+@font-face {
+  font-family: 'iconfont';  /* project id 1257227 */
+  src: url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.eot');
+  src: url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont";
+  font-size: .16rem;
+  font-style: normal;
+}
+.bao{
+  margin-top: -10rpx;
+  margin-right: 12rpx
+}
+.bao::before{
+  color: #717D9B;
+  content: "\e604";
+  font-size: 36rpx;
+}
+/* 无结果 */
+.noResult{
+  font-size: 34rpx;
+  margin-top: 40rpx;
+  color: #2B3C6A;
 }

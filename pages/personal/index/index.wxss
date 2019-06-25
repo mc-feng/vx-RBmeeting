@@ -19,14 +19,30 @@ page{
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 8rpx 16rpx 0 rgba(0,0,0,0.17);
-  margin-left: 80rpx;
+  left: 80rpx;
+  position: absolute;
+  z-index: 1
 }
 .user-font{
   font-size: 24rpx;
   color: #000000;
-  margin-left: 40rpx;
+  margin-left: 190rpx;
   font-weight: 600
 }
+.headerB{
+  height: 100rpx;
+  width: 184rpx;
+  position: absolute;
+  left: 0;
+  transform: rotate(180deg)
+}
+.headerL{
+  height: 100rpx;
+  width: 184rpx;
+  position: absolute;
+  right: 0;
+}
+/* 主体内容 */
 .content{
   width: 694rpx;
 }
@@ -276,3 +292,7 @@ button::after {
   color: #fff;
   font-size: 32rpx;
 }
+ /* 历史记录向下距离*/
+ .hisM{
+   margin-bottom: 60rpx
+ }

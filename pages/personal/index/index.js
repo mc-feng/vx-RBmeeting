@@ -14,7 +14,29 @@ Page({
    */
   data: {
     show:false,
-    result:[{},{}],
+    result:[{
+      name:"会议名称",
+      orderIds:"3",
+      roomId:"4",
+      path:"1504会议室10F",
+      userName:"李白",
+      week:"周三",
+      startTime:"10:00",
+      endTime:"11:30",
+      status:"0",
+      orderDate:"6月19日"
+    },{
+        name: "会议名称",
+        orderIds: "5",
+        roomId: "6",
+        path: "1502会议室12F",
+        userName: "李白",
+        week: "周四",
+        startTime: "15:00",
+        endTime: "16:30",
+        status: "0",
+        orderDate: "6月20日"
+    }],
     delBtnWidth: 65
   },
 
@@ -22,12 +44,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     http.history({
       data:{
         openId: app.globalData.openId,
         status: 0
       },
       success(res){
+        that.setData({
+          result: res.data
+        })
         console.log(res)
       },
       fail(err){
@@ -90,7 +116,6 @@ Page({
       });
     }
   },
-
   touchE: function (e) {
     if (e.changedTouches.length == 1) {
       //手指移动结束后水平位置 
@@ -115,13 +140,44 @@ Page({
   del(){
     var index = this.data.index;
     var result = this.data.result;
-    var that = this
-    result.splice(index, 1);
-    //更新列表的状态 
-    that.setData({
-      result: result,
-      show: !that.data.show
-    });
+    var that = this;
+    var selectData = result[index]
+    var orderDate = selectData.orderDate
+    var roomId = selectData.roomId
+    var orderIds = selectData.orderIds
+    console.log(selectData)
+    console.log(orderIds)
+    // result.splice(index, 1);
+    //     //更新列表的状态 
+    // that.setData({
+    //   result: result,
+    //   show: !that.data.show
+    // });
+    http.order({
+      data:{
+        orderDate,
+        roomId,
+        orderIds
+      },
+      success(res){
+        console.log(res)
+        result.splice(index, 1);
+        //更新列表的状态 
+        that.setData({
+          result: result,
+          show: !that.data.show
+        });
+      },
+      fail(err){
+        that.setData({
+          show: !that.data.show
+        });
+        wx.showToast({
+          title:err,
+          icon:"none"
+        })
+      }
+    })
   },
   cancel(){
    var that = this;

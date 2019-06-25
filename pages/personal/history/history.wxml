@@ -2,29 +2,37 @@
 <view class='header'>
   <open-data type="userAvatarUrl" class='user'></open-data>
   <view class='user-font'>
-    <view>Hi! <open-data type="userNickName" lang="zh_CN"></open-data></view>
+    <view>Hi <open-data type="userNickName" lang="zh_CN"></open-data> </view>
     <view>元气满满的一天又开始了！</view>
   </view>
+  <image src="../../../images/personal/headerB.png" class="headerB"></image>
+  <image src="../../../images/personal/headerB.png" class="headerL"></image>
 </view>
-<view class='content'>
-  <!-- 预约选项 -->
-  <view class='item-content'>
-   <view class='yuyue-item-warp' wx:for="{{result}}"  wx:key="{{index}}"> 
-    <view class='yuyue-item'>
-        <view class='yuyue-top'>
-          <view class='yuyue-top-font'>
-            <text>1502会议室</text><text>12F</text>
+<block wx-if="{{result.length==0}}">
+  <view class="noResult">暂无历史记录</view>
+</block>
+<block wx-else>
+  <view class='content'>
+    <!-- 预约选项 -->
+    <view class='item-content'>
+    <view class='yuyue-item-warp' wx:for="{{result}}"  wx:key="{{index}}"> 
+      <view class='yuyue-item'>
+          <view class='yuyue-top'>
+            <view class='yuyue-top-font'>
+              <text>1502会议室</text><text>12F</text>
+            </view>
+            <view class='yuyue-top-font2'>
+              <text>6月19日</text><text>（周三）</text><text>10:00---11:30</text>
+            </view>
+            <view class='yuyue-state'>{{item.status==1?"已失效":"已取消"}}</view>
           </view>
-          <view class='yuyue-top-font2'>
-            <text>6月19日</text><text>（周三）</text><text>10:00---11:30</text>
+          <view class='yuyue-bottm'>
+            <icon class="iconfont bao"/>
+            <text>请准时到达，如有问题请联系我们</text>
           </view>
-          <view class='yuyue-state'>已失效</view>
-        </view>
-        <view class='yuyue-bottm'>
-          <icon class="iconfont bao"/>
-          <text>请准时到达，如有问题请联系我们</text>
-        </view>
-     </view>
-   </view>
+      </view>
+    </view>
+    </view>
   </view>
-</view>
+</block>
+

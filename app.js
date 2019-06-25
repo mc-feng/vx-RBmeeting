@@ -3,9 +3,9 @@ import http from './api/api'
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
     //登录获取openid并保存全局变量
     this.loge()
     // 获取用户信息
@@ -53,7 +53,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
     openId:null
   }
 })

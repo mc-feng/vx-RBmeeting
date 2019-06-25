@@ -17,14 +17,19 @@ Page({
     })
   },
   onLoad: function () {
+    this.checkOpenId()
   },
   //页面展示时
   onShow() {
-    //防止网络延迟获取不到openid
-    var that = this
+  },
+  //防止网络延迟获取不到openid
+  checkOpenId(){
     setTimeout(res, 1000)
     function res() {
-      if (!app.globalData.openId) {
+      if (app.globalData.openId) {
+        console.log(app.globalData.openId)
+        console.log("已经获取")
+      } else {
         wx.login({
           success: res => {
             http.info({
@@ -33,18 +38,16 @@ Page({
               },
               success(res) {
                 console.log("openid获取失败重新获取")
-                that.globalData.openId = res.data.openid
+                app.globalData.openId = res.data.openid
+                console.log(app.globalData.openId)
               },
               fail(err) {
                 console.log(err)
               }
             })
-            console.log(res)
             // 发送 res.code 到后台换取 openId, sessionKey, unionId
           }
         })
-      } else {
-        console.log("已经获取")
       }
     }
   },
