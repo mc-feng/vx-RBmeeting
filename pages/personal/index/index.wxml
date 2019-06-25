@@ -23,7 +23,7 @@
             <text>{{item.path}}</text><text></text>
           </view>
           <view class='yuyue-top-font2'>
-            <text>{{item.orderDate}}</text><text>（周三）</text><text>{{item.startTime}}---{{item.endTime}}</text>
+            <text>{{item.orderDate}}</text><text>（{{item.week}}）</text><text>{{item.startTime}}---{{item.endTime}}</text>
           </view>
           <view class='yuyue-state'>预约中</view>
         </view>

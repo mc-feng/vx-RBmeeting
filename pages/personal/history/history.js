@@ -7,7 +7,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    result:[{},{}]
+    result: [{
+      name: "会议名称",
+      orderIds: "3",
+      roomId: "4",
+      path: "1504会议室10F",
+      userName: "李白",
+      week: "周三",
+      startTime: "10:00",
+      endTime: "11:30",
+      status: "0",
+      orderDate: "6月19日"
+    }, {
+      name: "会议名称",
+      orderIds: "5",
+      roomId: "6",
+      path: "1502会议室12F",
+      userName: "李白",
+      week: "周四",
+      startTime: "15:00",
+      endTime: "16:30",
+      status: "0",
+      orderDate: "6月20日"
+    }]
   },
 
   /**
@@ -15,22 +37,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    http.history({
-      data: {
-        openId: app.globalData.openId,
-        status:1,
-        status2:2
-      },
-      success(res) {
-        that.setData({
-          result: res.data
-        })
-        console.log(res)
-      },
-      fail(err) {
-        console.log(err)
-      }
-    })
+    // http.history({
+    //   data: {
+    //     openId: app.globalData.openId,
+    //     status:1,
+    //     status2:2
+    //   },
+    //   success(res) {
+    //     that.setData({
+    //       result: res.data
+    //     })
+    //     console.log(res)
+    //   },
+    //   fail(err) {
+    //     console.log(err)
+    //   }
+    // })
   },
 
   /**

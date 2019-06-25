@@ -7,35 +7,35 @@ var initdata = function (that) {
     result[i].txtStyle = ""
   }
   that.setData({ result: result })
-} 
+}
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    show:false,
-    result:[{
-      name:"会议名称",
-      orderIds:"3",
-      roomId:"4",
-      path:"1504会议室10F",
-      userName:"李白",
-      week:"周三",
-      startTime:"10:00",
-      endTime:"11:30",
-      status:"0",
-      orderDate:"6月19日"
-    },{
-        name: "会议名称",
-        orderIds: "5",
-        roomId: "6",
-        path: "1502会议室12F",
-        userName: "李白",
-        week: "周四",
-        startTime: "15:00",
-        endTime: "16:30",
-        status: "0",
-        orderDate: "6月20日"
+    show: false,
+    result: [{
+      name: "会议名称",
+      orderIds: "3",
+      roomId: "4",
+      path: "1504会议室10F",
+      userName: "李白",
+      week: "周三",
+      startTime: "10:00",
+      endTime: "11:30",
+      status: "0",
+      orderDate: "6月19日"
+    }, {
+      name: "会议名称",
+      orderIds: "5",
+      roomId: "6",
+      path: "1502会议室12F",
+      userName: "李白",
+      week: "周四",
+      startTime: "15:00",
+      endTime: "16:30",
+      status: "0",
+      orderDate: "6月20日"
     }],
     delBtnWidth: 65
   },
@@ -45,21 +45,21 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    http.history({
-      data:{
-        openId: app.globalData.openId,
-        status: 0
-      },
-      success(res){
-        that.setData({
-          result: res.data
-        })
-        console.log(res)
-      },
-      fail(err){
-        console.log(err)
-      }
-    })
+    // http.history({
+    //   data: {
+    //     openId: app.globalData.openId,
+    //     status: 0
+    //   },
+    //   success(res) {
+    //     that.setData({
+    //       result: res.data
+    //     })
+    //     console.log(res)
+    //   },
+    //   fail(err) {
+    //     console.log(err)
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -74,7 +74,7 @@ Page({
   onShow: function () {
 
   },
-  show(){
+  show() {
     this.setData({
       show: !this.data.show
     })
@@ -137,7 +137,7 @@ Page({
     }
   },
   // 弹框事件
-  del(){
+  del() {
     var index = this.data.index;
     var result = this.data.result;
     var that = this;
@@ -154,12 +154,12 @@ Page({
     //   show: !that.data.show
     // });
     http.order({
-      data:{
+      data: {
         orderDate,
         roomId,
         orderIds
       },
-      success(res){
+      success(res) {
         console.log(res)
         result.splice(index, 1);
         //更新列表的状态 
@@ -168,25 +168,25 @@ Page({
           show: !that.data.show
         });
       },
-      fail(err){
+      fail(err) {
         that.setData({
           show: !that.data.show
         });
         wx.showToast({
-          title:err,
-          icon:"none"
+          title: err,
+          icon: "none"
         })
       }
     })
   },
-  cancel(){
-   var that = this;
+  cancel() {
+    var that = this;
     that.setData({
       show: !that.data.show
     });
     initdata(that)
   },
-  linkToHis(){
+  linkToHis() {
     wx.navigateTo({
       url: '../history/history',
     })
