@@ -34,7 +34,6 @@ Page({
    */
   onLoad: function (options) {
     var now = new Date();
-    console.log(options)
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var day = now.getDate();
@@ -69,12 +68,9 @@ Page({
         openId: that.data.openId
         },
       success(res){
-        console.log(res)
         if (res.message=='登录失败'){
           that.complete();
-          console.log('aaa')
         }else{
-          console.log('bbb')
           that.setData({
             userId: res.data[0].userId
           })
@@ -147,7 +143,6 @@ getOrderList(year, month,day) {
   choose(e){
     var that = this;
     var index = e.currentTarget.dataset.index;
-    console.log(index)
     var per = that.data.time_period_number;/*选中时间段的集合*/
       if (per.length == 0) {/*第一次点击 加入选中集合，样式改变*/
         per.push(e.currentTarget.dataset.index);
@@ -165,7 +160,6 @@ getOrderList(year, month,day) {
           }
           per = [];
           that.data.time_period = [];
-          console.log(that.data.timesList)
         }
         else {/*第多次点击但不连续*/
           for (var i = 0; i < that.data.timesList.length; i++) {
@@ -187,8 +181,6 @@ getOrderList(year, month,day) {
       time_period: that.data.time_period,
       timesList: that.data.timesList,
     })
-    console.log(that.data.time_period)
-    console.log(that.data.timesList)
   },
   /*预约成功弹窗弹出*/
   success() {
@@ -274,7 +266,7 @@ getOrderList(year, month,day) {
     //   timingFunction: 'ease',//动画的效果 默认值是linear
     // })
     // this.animation = animation
-    // this.animation.translateY(-112).step()
+    // this.animation.translateY(-56).step()
     // this.setData({
     //   animationData: this.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
     // })
@@ -317,7 +309,6 @@ getOrderList(year, month,day) {
     var that = this;
     var weekend; 
     for (var i = 0; i < 10; i++) {
-      console.log(month)
       switch (week) {
         case 7:
           weekend = "日";
