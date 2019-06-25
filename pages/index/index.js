@@ -2,7 +2,7 @@
 //获取应用实例
 
 const app = getApp()
-import http from  '../../api/api'
+import http from '../../api/api'
 
 
 Page({
@@ -12,13 +12,13 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    show:false,
+    show: false,
     city: [],
-    index:0,
-    haveCity:false,
-    hysList:[],
-    arrays:[
-      { name: '会议室名称1', des:'可容纳8-10人，含投影布',local:'12F'},
+    index: 0,
+    haveCity: false,
+    hysList: [],
+    arrays: [
+      { name: '会议室名称1', des: '可容纳8-10人，含投影布', local: '12F' },
       { name: '会议室名称2', des: '可容纳8-10人，含投影布', local: '12F' },
       { name: '会议室名称3', des: '可容纳8-10人，含投影布', local: '12F' },
     ]
@@ -29,14 +29,14 @@ Page({
       index: e.detail.value
     })
   },
-  getMore(){
+  getMore() {
     wx.showToast({
       title: '成功',
       icon: 'success',
       duration: 2000
     })
   },
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -48,7 +48,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -71,12 +71,12 @@ Page({
     }
     that.getHysList();
   },
-  navTo(e){
+  navTo(e) {
     wx.navigateTo({
       url: '/pages/order/index?roomId=' + e.currentTarget.dataset.roomid + "&&roomName=" + e.currentTarget.dataset.roomname
     })
   },
-  getHysList(){
+  getHysList() {
     var that = this;
     http.rooms({
       success(res) {
@@ -87,29 +87,58 @@ Page({
         that.setData({
           hysList: res.data,
           city: that.data.city,
-          haveCity:true
+          haveCity: true
         })
       }
     });
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
   },
-  change(){
-     this.setData({
-       show :!this.data.show
-     })
+  change() {
+    this.setData({
+      show: !this.data.show
+    })
   },
-  onGetShow(e){
+  //防止网络延迟获取不到openid
+  checkOpenId() {
+    setTimeout(res, 1000)
+    function res() {
+      if (app.globalData.openId) {
+        console.log(app.globalData.openId)
+        console.log("已经获取")
+      } else {
+        wx.login({
+          success: res => {
+            http.info({
+              data: {
+                code: res.code
+              },
+              success(res) {
+                console.log("openid获取失败重新获取")
+                app.globalData.openId = res.data.openid
+                console.log(app.globalData.openId)
+              },
+              fail(err) {
+                console.log(err)
+              }
+            })
+            // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          }
+        })
+      }
+    }
+  },
+  onGetShow(e) {
     this.setData({
       show: !e
     })
   },
-  click(){
+  click() {
     var showTwo = this.selectComponent('#bots');
     showTwo.showModal()
   }

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "vtoast": "../../../component/toast/toast"
+  },
+  "navigationBarTitleText": "个人中心"
+}

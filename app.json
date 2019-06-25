@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/personal/index",
     "pages/order/index",
+    "pages/personal/index/index",
+    "pages/personal/history/history",
     "pages/logs/logs"
   ],
   "window": {
@@ -21,7 +22,7 @@
         "selectedIconPath": "img/tabs/home-d.png"
       },
       {
-        "pagePath": "pages/personal/index",
+        "pagePath": "pages/personal/index/index",
         "text": "个人中心",
         "iconPath": "img/tabs/personal.png",
         "selectedIconPath": "img/tabs/personal-d.png"

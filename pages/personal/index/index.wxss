@@ -1,0 +1,298 @@
+/* pages/personal/index/index.wxss */
+page{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background: #F8F8F8;
+}
+.header{
+  width: 100%;
+  height: 100rpx;
+  background: #FFF2F1;
+  display: flex;
+  align-items: center;
+}
+.user{
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8rpx 16rpx 0 rgba(0,0,0,0.17);
+  left: 80rpx;
+  position: absolute;
+  z-index: 1
+}
+.user-font{
+  font-size: 24rpx;
+  color: #000000;
+  margin-left: 190rpx;
+  font-weight: 600
+}
+.headerB{
+  height: 100rpx;
+  width: 184rpx;
+  position: absolute;
+  left: 0;
+  transform: rotate(180deg)
+}
+.headerL{
+  height: 100rpx;
+  width: 184rpx;
+  position: absolute;
+  right: 0;
+}
+/* 主体内容 */
+.content{
+  width: 694rpx;
+}
+.item{
+  width: 100%;
+  box-shadow: 0 30rpx 18rpx -14rpx #E5EAF5;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  height: 104rpx;
+  margin-top: 18rpx;
+}
+/* icon字体 */
+@font-face {
+  font-family: 'iconfont';  /* project id 1257227 */
+  src: url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.eot');
+  src: url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1257227_q9vlsf9w0p.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont";
+  font-size: .16rem;
+  font-style: normal;
+}
+.rili{
+  margin-left: 54rpx;
+}
+.bao{
+  margin-top: -10rpx;
+  margin-right: 12rpx
+}
+.down{
+  position: absolute;
+  right: 52rpx;
+}
+.right{
+  position: absolute;
+  left: 16rpx;
+  top: -12rpx;
+}
+.jingao::before{
+   content: "\e611";
+   font-size: 130rpx;
+   color: #fff 
+}
+.down:before { 
+  content: "\e60f";
+  font-size: 36rpx;
+}
+.rili:before {  
+  color: #2B3C6A;
+  content: "\e60a";
+  font-size: 52rpx;
+}
+.bao::before{
+  color: #717D9B;
+  content: "\e604";
+  font-size: 36rpx;
+}
+.right::before{
+  content: "\e60c";
+  font-size: 30rpx;
+}
+.quxiao::before{
+  content: "\e60d";
+  font-size: 56rpx;
+}
+.item-font{
+  font-size: 34rpx;
+  color: #2B3C6A; 
+  margin-left: 22rpx;
+}
+/* 预约列表样式 */
+.item-content{
+  margin-top: 30rpx;
+}
+.yuyue-item-warp{
+  position: relative;
+  height: 212rpx;
+  margin-bottom: 26rpx;
+}
+.yuyue-item{
+  width: 100%;
+  background: #FFFFFF;
+  border: 2rpx solid #F1F2FB;
+  border-radius: 30rpx;
+  height: 212rpx;
+  overflow: hidden;
+  position: absolute;
+  z-index: 3;
+  transition: left 0.2s ease-in-out;
+}
+.yuyue-top{
+  background: #fff;
+  font-size: 34rpx;
+  color: #2B3C6A;
+  position: relative
+}
+.yuyue-top-font{
+  margin-left: 54rpx;
+  margin-top: 22rpx;
+}
+.yuyue-top-font2{
+  margin-left: 54rpx;
+  line-height: 56rpx;
+}
+.yuyue-bottm{
+ background: #E5E5E5;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #717D9B;
+ font-size: 24rpx;
+ height: 70rpx;
+ margin-top: 24rpx;
+}
+/* 预约状态 */
+.yuyue-state{
+  height: 46rpx;
+  width: 200rpx;
+  background: #F03F24;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 46rpx;
+  transform: rotate(45deg);
+  position: absolute;
+  right: -54rpx;
+  top: 0
+}
+/* 预约删除样式 */
+.yuyue-delate{
+  height: 212rpx;
+  width: 160rpx;
+  background:#949494;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius:30rpx
+}
+.yuyue-delate-warp{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.delate-font{
+  font-size: 24rpx;
+  color: #FFFFFF;
+  margin-left: 26rpx;
+}
+.delate-tuan{
+  font-size: 24rpx;
+  color: #FFFFFF;
+}
+/* 历史记录样式 */
+.his-raduis{
+  width: 48rpx;
+  height: 48rpx;
+  text-align: center;
+  line-height: 48rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 #5298FF;
+  position: absolute;
+  right: 40rpx;
+  border-radius: 50%
+}
+/* 弹框样式 */
+.toast{
+  width: 572rpx;
+  background: #FFFFFF;
+  border-radius: 18rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: relative;
+  transform: translateY(-50%) translateX(-50%);
+}
+.toast-header{
+  margin-top: 100rpx;
+  font-size: 36rpx;
+  color: #F03F24;
+  line-height: 50rpx;
+}
+.toast-content{
+  margin-top: 26rpx;
+  border: 2rpx solid #F03F24;
+  border-radius: 10rpx;
+  width: 460rpx;
+  padding: 24rpx 32rpx;
+  font-size: 24rpx;
+  color: #000000;
+  line-height: 50rpx;
+}
+.toast-buttun-warp{
+  margin-top: 74rpx;
+  display: flex;
+  justify-content: space-around;
+  width: 460rpx;
+  margin-bottom: 56rpx;
+}
+.toast-jin{
+  position: absolute;
+  top: -90rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: #F03F24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toast-content-mid{
+  font-size: 28rpx;
+  font-weight: 600
+}
+/* 弹框按键 */
+button::after {
+  border: none;
+}
+.button1{
+  width: 204rpx;
+  height: 76rpx;
+  border: 1px solid #F03F24;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 76rpx;
+  background: #fff;
+  font-size: 32rpx;
+  color: #F03F24;
+}
+.button2{
+  width: 204rpx;
+  height: 76rpx;
+  border: 1px solid #F03F24;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 76rpx;
+  background: #F03F24;
+  color: #fff;
+  font-size: 32rpx;
+}
+ /* 历史记录向下距离*/
+ .hisM{
+   margin-bottom: 60rpx
+ }

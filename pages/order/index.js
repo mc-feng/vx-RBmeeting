@@ -26,7 +26,7 @@ Page({
     userName:'',
     time_period:[],
     timePeriod:[],
-    openId: 'oV0mB4lrdf12AaMaJ8MJ-ZNIXYXK'
+    openId: app.globalData.openId
     // animationData: {},
   },
 
@@ -446,7 +446,7 @@ getOrderList(year, month,day) {
         that.setData({
           timePeriod: that.data.timePeriod
         })
-        http.order({
+        http.toOrder({
           data:{
             orderDate: that.data.orderDate,
             timesIds: timesIds,

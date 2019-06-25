@@ -233,7 +233,7 @@ checkbox .wx-checkbox-input{
 .order-btn{
   width:100%;
   background: #F03F24;
-  border-radius: 8rpx;
+  border-radius: 0;
   height:110rpx;
   position:fixed;
   bottom:0;

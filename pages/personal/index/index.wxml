@@ -1,0 +1,71 @@
+<!--pages/personal/index/index.wxml-->
+<view class='header'>
+  <open-data type="userAvatarUrl" class='user'></open-data>
+  <view class='user-font'>
+    <view>Hi <open-data type="userNickName" lang="zh_CN"></open-data> </view>
+    <view>元气满满的一天又开始了！</view>
+  </view>
+  <image src="../../../images/personal/headerB.png" class="headerB"></image>
+  <image src="../../../images/personal/headerB.png" class="headerL"></image>
+</view>
+<view class='content'>
+  <!-- 预约选项 -->
+  <view class='item'>
+    <icon class="iconfont rili"/>
+    <view class='item-font'>当前预约</view>
+    <icon class="iconfont down"/>
+  </view>
+  <view class='item-content'>
+   <view class='yuyue-item-warp' wx:for="{{result}}"  wx:key="{{index}}"> 
+    <view class='yuyue-item' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}">
+        <view class='yuyue-top'>
+          <view class='yuyue-top-font'>
+            <text>{{item.path}}</text><text></text>
+          </view>
+          <view class='yuyue-top-font2'>
+            <text>{{item.orderDate}}</text><text>({{item.week}})</text><text>{{item.startTime}}---{{item.endTime}}</text>
+          </view>
+          <view class='yuyue-state'>预约中</view>
+        </view>
+        <view class='yuyue-bottm'>
+          <icon class="iconfont bao"/>
+          <text>请准时到达，如有问题请联系我们</text>
+        </view>
+     </view>
+     <view class='yuyue-delate' bindtap='show'>
+       <view class='delate-font'>
+         <view class='yuyue-delate-warp'>
+           <icon class="iconfont quxiao"/>
+           <view class='delate-tuan'>取消预约</view>
+         </view>
+       </view>
+     </view>
+   </view>
+  </view>
+  <!-- 历史记录 -->
+  <view class='item hisM' bindtap='linkToHis'>
+    <icon class="iconfont rili"/>
+    <view class='item-font'>历史记录</view>
+    <view class='his-raduis'>    
+      <icon class="iconfont right"/>
+    </view>
+  </view>
+</view>
+<!-- 弹框 -->
+<vtoast flow="{{show}}">
+  <view class='toast'>
+    <view class='toast-jin'>  
+     <icon class="iconfont jingao"/>
+    </view>
+    <view class='toast-header'>你正在取消预约！</view>
+    <view class='toast-content'>
+      <view>1504会议室  15F</view>
+      <view class='toast-content-mid'>2019年6月19日（周三）</view>
+      <view>17:00 ~18:00</view>
+    </view>
+    <view class='toast-buttun-warp'>
+      <button class='button1' bindtap='cancel'>不取消了</button>
+      <button class='button2' bindtap='del'>取消预约</button>
+    </view>
+  </view>
+</vtoast>
