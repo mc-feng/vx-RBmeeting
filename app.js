@@ -35,6 +35,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    url:'http://192.168.31.109:8080/yjjk'
+    url:'http://192.168.31.109:8080/yjjk',
+    phoneNumber: '021-21343523'
   }
 })

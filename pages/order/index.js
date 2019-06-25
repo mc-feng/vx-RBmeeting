@@ -9,7 +9,7 @@ Page({
   data: {
     url: app.globalData.url,
     name:'',
-    phoneNumber:'',
+    phoneNumber: app.globalData.phoneNumber,
     success:'',
     wrong:'',
     complete:'',
@@ -259,7 +259,6 @@ getOrderList(year, month,day) {
     })
   },
   scrollDown(){
-
     // console.log('aaaaa')
     // var animation = wx.createAnimation({
     //   duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -387,7 +386,7 @@ getOrderList(year, month,day) {
   /*打电话*/
   makePhone(){
     wx.makePhoneCall({
-      phoneNumber: '021-21343523'
+      phoneNumber: phoneNumber
     })
   },
   /*点击日期进行切换*/
