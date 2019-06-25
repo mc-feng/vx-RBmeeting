@@ -149,8 +149,6 @@ getOrderList(year, month,day) {
     var index = e.currentTarget.dataset.index;
     console.log(index)
     var per = that.data.time_period_number;/*选中时间段的集合*/
-    console.log(per)
-    console.log(e.currentTarget.dataset.index)
       if (per.length == 0) {/*第一次点击 加入选中集合，样式改变*/
         per.push(e.currentTarget.dataset.index);
         that.data.time_period.push(e.currentTarget.dataset.timesid);
@@ -189,6 +187,8 @@ getOrderList(year, month,day) {
       time_period: that.data.time_period,
       timesList: that.data.timesList,
     })
+    console.log(that.data.time_period)
+    console.log(that.data.timesList)
   },
   /*预约成功弹窗弹出*/
   success() {
@@ -402,6 +402,10 @@ getOrderList(year, month,day) {
   /*点击日期进行切换*/
   chooseDate(e){
     var that = this;
+    that.setData({
+      time_period: [],
+      time_period_number: []
+    })
     var year = e.currentTarget.dataset.year;
     var month = e.currentTarget.dataset.month;
     var day = e.currentTarget.dataset.day;
