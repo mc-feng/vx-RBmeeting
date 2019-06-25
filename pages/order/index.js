@@ -446,7 +446,6 @@ getOrderList(year, month,day) {
         that.setData({
           timePeriod: that.data.timePeriod
         })
-        console.log(that.data.time_period)
         http.order({
           data:{
             orderDate: that.data.orderDate,
