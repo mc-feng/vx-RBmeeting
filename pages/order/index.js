@@ -25,6 +25,7 @@ Page({
     week:'',
     userName:'',
     time_period:[],
+    timePeriod:[],
     openId: 'oV0mB4lrdf12AaMaJ8MJ-ZNIXYXK'
     // animationData: {},
   },
@@ -144,13 +145,16 @@ getOrderList(year, month,day) {
     var that = this;
     var index = e.currentTarget.dataset.index;
     var per = that.data.time_period_number;/*选中时间段的集合*/
+
       if (per.length == 0) {/*第一次点击 加入选中集合，样式改变*/
         per.push(e.currentTarget.dataset.index);
+        // that.data.timePeriod.push(e.currentTarget.dataset.period);
         that.data.time_period.push(e.currentTarget.dataset.timesid);
         that.data.timesList[index].isSelect = 1;
       } else {/*第二次点击*/
         if (per[per.length - 1] - Number(e.currentTarget.dataset.index) == 1 || per[per.length - 1] - Number(e.currentTarget.dataset.index) == -1) {/*第多次点击且连续*/
           per.push(e.currentTarget.dataset.index);/*加入选中集合*/
+          // that.data.timePeriod.push(e.currentTarget.dataset.period);
           that.data.time_period.push(e.currentTarget.dataset.timesid);
           that.data.timesList[index].isSelect = 1;/*样式改变 被选中*/
         } 
@@ -187,6 +191,11 @@ getOrderList(year, month,day) {
     this.setData({
       success: !this.data.success
     })
+    setTimeout(function () {
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }, 2000)
   },
   /*错误弹窗弹出*/
   wrong(){
@@ -403,7 +412,9 @@ getOrderList(year, month,day) {
     that.getOrderList(year, month, day)
     that.setData({
       dateActive: e.currentTarget.dataset.index,
-      orderDate: year + '-' + month + '-' + day
+      orderDate: year + '-' + month + '-' + day,
+      month_choose:month,
+      day_choose:day
     })
   },
   /*预约*/
@@ -429,7 +440,13 @@ getOrderList(year, month,day) {
         var timesIds = '';
         for (var i = 0; i < that.data.time_period.length;i++){
           timesIds = timesIds + that.data.time_period[i]+(',');
+          
+          that.data.timePeriod.push(that.data.timesList[that.data.time_period_number[i]]);
         }
+        that.setData({
+          timePeriod: that.data.timePeriod
+        })
+        console.log(that.data.time_period)
         http.order({
           data:{
             orderDate: that.data.orderDate,
@@ -440,15 +457,12 @@ getOrderList(year, month,day) {
           },
           success(res){
             if (res.message=='预约成功'){
-              wx.showToast({
-                title: res.message,
-                icon:'none'
-              })
+              that.success();
               setTimeout(function () {
                 wx.switchTab({
                   url: '/pages/index/index',
                 })
-              }, 1000)
+              }, 2000)
             }
           },fail(){
 
