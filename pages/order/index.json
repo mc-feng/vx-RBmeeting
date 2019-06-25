@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "PICC健康上海会议室预约",
   "usingComponents": {
-    "cover":"/component/cover/cover"
+    "vtoast":"/component/toast/toast"
   }
 }

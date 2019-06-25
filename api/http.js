@@ -6,7 +6,13 @@ module.exports = {
     //   token,
     //   sign
     // }暂时不需要
-    let baseUrl = "https://www.apiopen.top"
+    if (method == "PUT" || "DELETE") {
+      console.log("来")
+      var headers = "application/x-www-form-urlencoded"
+    } else {
+      var headers = "application/json"
+    }
+    let baseUrl = "http://192.168.31.109:8080/yjjk"
     let data ={}
     if (params.data) { // 在这里判断一下data是否存在，params表示前端需要传递的数据，params是一个对象，有三组键值对，data：表示请求要发送的数据，success：成功的回调，fail：失败的回调，这三个字段可缺可无，其余字段会忽略
       for (let key in params.data) { // 在这里判断传过来的参数值为null，就删除这个属性
@@ -16,13 +22,12 @@ module.exports = {
       }
       data = { ...data, ...params.data }
     }
+    console.log(headers)
     wx.request({
       url: baseUrl + url, // 就是拼接上前缀,此接口域名是开放接口，可访问
-      method: method == 'post' ? 'post' : 'get', // 判断请求类型，除了值等于'post'外，其余值均视作get
+      method: method , // 判断请求类型，除了值等于'post'外，其余值均视作get
       data,
-      header: {
-        'content-type': 'application/json'
-      },
+      header: { 'content-type': headers},
       success(res) {
         params.success(res.data)
       },

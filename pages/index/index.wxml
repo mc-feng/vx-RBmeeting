@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="top">
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="choose_Local">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{city}}" class="choose_Local" wx:if="haveCity">
     <view class="picker">
-      {{array[index]}}
+      {{city[index]}}
      <icon class="iconfont local"></icon>
     </view>
   </picker>
@@ -20,14 +20,15 @@
         </view>
         <view class="item-right">
           <text class="item-title">{{item.name}}</text>
-          <text class="item-describe">{{item.des}}</text>
-          <text class="item-local">地址：{{item.local}}</text>
-          <button class="item-order">预约</button>
+          <text class="item-describe">{{item.description}}</text>
+          <text class="item-local">地址：{{item.path}}</text>
+          <button class="item-order" bindtap="navTo" data-roomid="{{item.roomId}}" data-roomname='{{item.name}}'>预约</button>
         </view>
       </view>
     </scroll-view>
   </view>
 </view>
+
 <!-- <view class="container"> 
   <view class='item'>
     <view class='tiao'>预约</view>

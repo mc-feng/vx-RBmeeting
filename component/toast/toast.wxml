@@ -1,4 +1,5 @@
-<view class="zan-dialog {{ flow ? 'zan-dialog--show' : '' }}">  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+<view class="zan-dialog {{ flow ? 'zan-dialog--show' : '' }}">  
+  <view class="zan-dialog__mask" />
   <view class="zan-dialog__container">
     <slot></slot>
   </view>

@@ -10,15 +10,15 @@
 }
 .zan-dialog__container {
   position: fixed;
-  bottom: 600rpx;
+  /* background:#fff; */
+  top: 50%;
   transform: translateY(300%);/* 弹框弹出距离，与弹框布局高度有关，如300%表示弹起距离为3倍弹窗高度 */
   transition: all 0.4s ease;
   z-index: 12;
- /* border-radius: 20rpx;
-  box-shadow: 0px 3px 3px 2px gainsboro; 弹框的悬浮阴影效果，如不需要可注释该行} */
 }
 .zan-dialog--show .zan-dialog__container {
-   transform: translateY(0);
+   transform: translate(0,0);
+   width:100%;
 }
 
 .zan-dialog--show .zan-dialog__mask {

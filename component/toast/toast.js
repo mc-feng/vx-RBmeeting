@@ -15,9 +15,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-     toggleDialog() {
-       console.log(this.properties.flow)
-       this.triggerEvent('myevent', this.properties.flow)
-     },
+    //  toggleDialog() {
+    //    console.log(this.properties.flow)
+    //    this.triggerEvent('myevent', this.properties.flow)
+    //  },
   }
 })

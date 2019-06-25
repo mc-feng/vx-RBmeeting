@@ -10,13 +10,16 @@ color: transparent;
 }
 .top{
   padding:16rpx 38rpx;
+  height:60rpx;
+
   margin-bottom:28rpx;
 }
 .content{
   padding:0 38rpx;
 }
 .choose_Local{
-  width:98rpx;
+  display:block;
+float:left;
   height:60rpx;
   line-height:60rpx;
   padding:0 24rpx;
@@ -59,7 +62,7 @@ color: transparent;
   float:right;
 }
 .local:before{
-  content:'\e617';
+  content:'\e60f';
   font-weight:600;
   font-size:28rpx;
   height:28rpx;
@@ -86,6 +89,7 @@ color: transparent;
 }
 .item-right{
   padding-left:40rpx;
+  width:290rpx;
   /* justify-content:space-around; */
 }
 .item-right text{

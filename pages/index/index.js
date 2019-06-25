@@ -1,16 +1,21 @@
 //index.js
 //获取应用实例
+
 const app = getApp()
+import http from  '../../api/api'
+
 
 Page({
   data: {
+    url: app.globalData.url,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     show:false,
-    array: ['上海', '杭州', '西安', '北京'],
+    city: [],
     index:0,
+    haveCity:false,
     arrays:[
       { name: '会议室名称1', des:'可容纳8-10人，含投影布',local:'12F'},
       { name: '会议室名称2', des: '可容纳8-10人，含投影布', local: '12F' },
@@ -19,7 +24,6 @@ Page({
   },
   //事件处理函数
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
@@ -37,6 +41,7 @@ Page({
     })
   },
   onLoad: function () {
+    var that = this;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -63,9 +68,30 @@ Page({
         }
       })
     }
+    that.getHysList();
+  },
+  navTo(e){
+    wx.navigateTo({
+      url: '/pages/order/index?roomId=' + e.currentTarget.dataset.roomid + "&&roomName=" + e.currentTarget.dataset.roomname
+    })
+  },
+  getHysList(){
+    var that = this;
+    http.rooms({
+      success(res) {
+        that.data.city.push(res.data[0].city)
+        // for (var i = 0; i < res.data.length; i++) {
+        //   that.data.city.push(res.data[i].city)
+        // }
+        that.setData({
+          arrays: res.data,
+          city: that.data.city,
+          haveCity:true
+        })
+      }
+    });
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -73,7 +99,6 @@ Page({
     })
   },
   change(){
-     console.log(this.data.show)
      this.setData({
        show :!this.data.show
      })
