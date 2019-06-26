@@ -59,9 +59,9 @@
     </view>
     <view class='toast-header'>你正在取消预约！</view>
     <view class='toast-content'>
-      <view>1504会议室  15F</view>
-      <view class='toast-content-mid'>2019年6月19日（周三）</view>
-      <view>17:00 ~18:00</view>
+      <view>{{showResult.path}}</view>
+      <view class='toast-content-mid'>{{showResult.orderDate}}（{{showResult.week}}）</view>
+      <view>{{showResult.startTime}} ~{{showResult.endTime}}</view>
     </view>
     <view class='toast-buttun-warp'>
       <button class='button1' bindtap='cancel'>不取消了</button>

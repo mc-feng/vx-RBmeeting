@@ -128,11 +128,13 @@ Page({
       //获取手指触摸的是哪一项 
       var index = e.currentTarget.dataset.index;
       var result = this.data.result;
-      result[index].txtStyle = txtStyle;
+      var showResult = result[index];
+      showResult.txtStyle = txtStyle;
       //更新列表的状态 
       this.setData({
         result: result,
-        index
+        index,
+        showResult
       });
     }
   },
