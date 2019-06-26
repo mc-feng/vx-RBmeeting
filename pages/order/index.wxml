@@ -88,7 +88,9 @@
         <icon class="iconfont tips-icon phone" bindtap="makePhone"></icon>
       </view>
       <text class="tips-text">请完善您的信息再进行预约哦</text>
-      <button class="confirm firm-btn" bindtap="checkComplete">确认</button>
+      
+      <cover-view class="confirm firm-btn" bindtap="checkComplete">确认</cover-view>
+
     </form>
   </view>
 </vtoast>
