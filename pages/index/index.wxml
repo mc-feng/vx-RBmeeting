@@ -14,7 +14,7 @@
   </view>
   <view class="cont">
     <scroll-view class="contH" lower-threshold="0" bindscrolltolower="getMore" scroll-y="true">
-      <view class="item clearfix" wx:for="{{hysList}}">
+      <view class="item clearfix" wx:for="{{hysList}}" wx:key="{{index}}">
         <view class="item-left">
           <image src="../../img/mr.png"></image>
         </view>

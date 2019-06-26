@@ -17,7 +17,7 @@
   <view class="date-left">
     <scroll-view class="date-scroll"  scroll-y="true">
     <view>
-      <view class="date-item {{index==dateActive?'date-item-active':''}}" wx:for="{{dayList}}" bindtap="chooseDate" data-index="{{index}}" data-year="{{item.year}}" data-month="{{item.date}}" data-day="{{item.time}}">
+      <view class="date-item {{index==dateActive?'date-item-active':''}}" wx:for="{{dayList}}" wx:key="{{index}}" bindtap="chooseDate" data-index="{{index}}" data-year="{{item.year}}" data-month="{{item.date}}" data-day="{{item.time}}">
         <text class="date-text">{{item.date<10?('0'+item.date):item.date}}月{{item.time<10?('0'+item.time):item.time}}日</text>
         <text class="time-text">(周{{item.week}})</text>
       </view>
@@ -29,7 +29,7 @@
   </view>
   <scroll-view scroll-y='true' style='height:864rpx;'>
     <checkbox-group class="date-right">
-    <checkbox wx:for="{{timesList}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}}  " bindtap="{{item.canSelect==true?'choose':''}}" data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}">
+    <checkbox wx:for="{{timesList}}" wx:key="{{index}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}}  " bindtap="{{item.canSelect==true?'choose':''}}" data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}">
       <!-- <icon class="iconfont order-yes time-dur"></icon> -->
       <image src="../../img/yued.png" class='yue' wx:if="{{item.canSelect==false}}"></image>
       <image src="../../img/yu.png" class='yue' wx:if="{{(item.canSelect==true)&&(item.isSelect==0)}}"></image>
@@ -118,7 +118,7 @@
       <view class="project-items clearfix">
         <text class="yy-date-value">{{month_choose}}月{{day_choose}}日</text>
         <view class="yy-time-value">
-          <text wx:for="{{timePeriod}}">{{item.startTime}}~{{item.endTime}}</text>
+          <text wx:for="{{timePeriod}}" wx:key="{{index}}">{{item.startTime}}~{{item.endTime}}</text>
         </view>
       </view>
       <text class="tips-text">请准时到达，有疑问可以联系咨询～</text>

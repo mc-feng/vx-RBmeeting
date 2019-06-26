@@ -70,6 +70,10 @@ Page({
         }
       })
     }
+    /*that.getHysList();*/
+  },
+  onShow: function () { 
+    var that = this;
     that.getHysList();
   },
   navTo(e) {

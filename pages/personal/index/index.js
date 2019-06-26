@@ -44,22 +44,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    http.history({
-      data:{
-        openId: app.globalData.openId,
-        status: 0
-      },
-      success(res){
-        that.setData({
-          result: res.data
-        })
-        console.log(res)
-      },
-      fail(err){
-        console.log(err)
-      }
-    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -72,7 +57,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    http.history({
+      data: {
+        openId: app.globalData.openId,
+        status: 0
+      },
+      success(res) {
+        that.setData({
+          result: res.data
+        })
+        console.log(res)
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
   },
   show(){
     this.setData({
