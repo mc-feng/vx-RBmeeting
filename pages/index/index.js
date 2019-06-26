@@ -66,8 +66,30 @@ Page({
         }
       })
     }
-    /*that.getHysList();*/
+    /*that.login();
+    that.getHysList();*/
   },
+  /*登陆
+  login() {
+    var that = this;
+    http.login({
+      data: {
+        openId: app.globalData.openId
+      },
+      success(res) {
+        if (res.message == '登录失败') {
+          // that.complete();
+        } else {
+          that.setData({
+            userId: res.data[0].userId
+          })
+        }
+
+      }, fail() {
+
+      }
+    })
+  },*/
   onShow: function () { 
     var that = this;
     that.getHysList();
@@ -110,8 +132,7 @@ Page({
     setTimeout(res, 1000)
     function res() {
       if (app.globalData.openId) {
-        console.log(app.globalData.openId)
-        console.log("已经获取")
+
       } else {
         wx.login({
           success: res => {
@@ -120,9 +141,7 @@ Page({
                 code: res.code
               },
               success(res) {
-                console.log("openid获取失败重新获取")
                 app.globalData.openId = res.data.openid
-                console.log(app.globalData.openId)
               },
               fail(err) {
                 console.log(err)

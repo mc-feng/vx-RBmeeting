@@ -9,7 +9,7 @@ Page({
   data: {
     url: app.globalData.url,
     name:'',
-    phoneNumber: app.globalData.phoneNumber,
+    phoneNumbers: app.globalData.phoneNumber,
     success:'',
     wrong:'',
     complete:'',
@@ -61,30 +61,8 @@ Page({
     this.getDay(year,month,day,week);
     this.getTimeList(year,month,day);
     this.login();
-    // this.getOrderList(year, month, day);
   },
-  /*登陆*/
-  login(){
-    var that = this;
-    console.log(that.data.openId)
-    http.login({
-      data: { 
-        openId: that.data.openId
-        },
-      success(res){
-        if (res.message=='登录失败'){
-          that.complete();
-        }else{
-          that.setData({
-            userId: res.data[0].userId
-          })
-        }
-        
-      },fail(){
-        
-      }
-    })
-  },
+  
   /*获取时间段列表*/
   getTimeList(year,month,day){
     var that = this;
@@ -187,6 +165,27 @@ getOrderList(year, month,day) {
       time_period_number:per,
       time_period: that.data.time_period,
       timesList: that.data.timesList,
+    })
+  },
+  /*登陆*/
+  login() {
+    var that = this;
+    http.login({
+      data: {
+        openId: app.globalData.openId
+      },
+      success(res) {
+        if (res.message == '登录失败') {
+          that.complete();
+        } else {
+          that.setData({
+            userId: res.data[0].userId
+          })
+        }
+
+      }, fail() {
+
+      }
     })
   },
   /*预约成功弹窗弹出*/
@@ -454,22 +453,22 @@ getOrderList(year, month,day) {
         that.setData({
           timePeriod: that.data.timePeriod
         })
-        var month_td;
-        var day_td;
-        if (that.data.month < 10) {
-          month_td = "0" + that.data.month;
-        }else{
-          month_td = that.data.month;
-        }
-        if (that.data.day < 10) {
-          day_td = "0" + that.data.day;
-        }else{
-          day_td = that.data.day;
-        }
-        var orderD = that.data.year + '-' + month_td + '-' + day_td;
+        // var month_td;
+        // var day_td;
+        // if (that.data.month < 10) {
+        //   month_td = "0" + that.data.month;
+        // }else{
+        //   month_td = that.data.month;
+        // }
+        // if (that.data.day < 10) {
+        //   day_td = "0" + that.data.day;
+        // }else{
+        //   day_td = that.data.day;
+        // }
+        // var orderD = that.data.year + '-' + month_td + '-' + day_td;
         http.toOrder({
           data:{
-            orderDate: orderD,
+            orderDate: that.data.orderDate,
             timesIds: timesIds,
             roomId: that.data.roomId,
             userId:that.data.userId,
