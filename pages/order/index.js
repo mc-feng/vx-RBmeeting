@@ -64,6 +64,7 @@ Page({
   /*登陆*/
   login(){
     var that = this;
+    console.log(that.data.openId)
     http.login({
       data: { 
         openId: that.data.openId

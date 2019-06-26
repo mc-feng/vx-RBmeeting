@@ -142,7 +142,7 @@ Page{
   background: #FFFFFF;
   border: 2rpx solid #F03F24;
   border-radius: 16rpx;
-  padding:20rpx 32rpx;
+  padding:20rpx 30rpx;
   line-height:34rpx;
   box-sizing: inherit;
   float:left;

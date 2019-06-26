@@ -43,6 +43,7 @@ Page({
   },
   onLoad: function () {
     var that = this;
+    that.checkOpenId();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
