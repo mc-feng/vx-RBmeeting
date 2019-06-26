@@ -17,25 +17,21 @@ Page({
     index: 0,
     haveCity: false,
     hysList: [],
-    arrays: [
-      { name: '会议室名称1', des: '可容纳8-10人，含投影布', local: '12F' },
-      { name: '会议室名称2', des: '可容纳8-10人，含投影布', local: '12F' },
-      { name: '会议室名称3', des: '可容纳8-10人，含投影布', local: '12F' },
-    ]
   },
-  //事件处理函数
+  /*事件处理函数*/
   bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value
     })
   },
+  /*
   getMore() {
     wx.showToast({
       title: '成功',
       icon: 'success',
       duration: 2000
     })
-  },
+  },*/
   bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'

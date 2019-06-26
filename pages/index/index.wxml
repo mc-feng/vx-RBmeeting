@@ -13,7 +13,7 @@
     <text>可预约会议室</text>
   </view>
   <view class="cont">
-    <scroll-view class="contH" lower-threshold="0" bindscrolltolower="getMore" scroll-y="true">
+    <scroll-view class="contH" lower-threshold="0"  scroll-y="true">
       <view class="item clearfix" wx:for="{{hysList}}" wx:key="{{index}}">
         <view class="item-left">
           <image src="../../img/mr.png"></image>
