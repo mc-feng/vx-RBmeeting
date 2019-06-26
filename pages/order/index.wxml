@@ -122,7 +122,7 @@
         </view>
       </view>
       <text class="tips-text">请准时到达，有疑问可以联系咨询～</text>
-      <button class="confirm" bindtap="success">确认</button>
+      <button class="confirm" bindtap="success_ok">确认</button>
       <text class="tips-text">详细信息可在个人中心-预约记录查看</text>
     </form>
   </view>

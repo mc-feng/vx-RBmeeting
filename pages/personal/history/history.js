@@ -14,23 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    http.history({
-      data: {
-        openId: app.globalData.openId,
-        status:1,
-        status2:2
-      },
-      success(res) {
-        that.setData({
-          result: res.data
-        })
-        console.log(res)
-      },
-      fail(err) {
-        console.log(err)
-      }
-    })
+    
   },
 
   /**
@@ -44,7 +28,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    http.history({
+      data: {
+        openId: app.globalData.openId,
+        status: 1,
+        status2: 2
+      },
+      success(res) {
+        that.setData({
+          result: res.data
+        })
+        console.log(res)
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
   },
 
   /**

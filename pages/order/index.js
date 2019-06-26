@@ -54,6 +54,8 @@ Page({
       month:month,
       day:day,
       week: week,
+      month_choose: month,
+      day_choose:day,
       orderDate: year + '-' + month_td + '-' + day_td
     })
     this.getDay(year,month,day,week);
@@ -189,6 +191,11 @@ getOrderList(year, month,day) {
   },
   /*预约成功弹窗弹出*/
   success() {
+    this.setData({
+      success: !this.data.success
+    })
+  },
+  success_ok(){
     this.setData({
       success: !this.data.success
     })
@@ -410,7 +417,7 @@ getOrderList(year, month,day) {
     var month = e.currentTarget.dataset.month;
     var day = e.currentTarget.dataset.day;
     that.getTimeList(year,month,day);
-    that.getOrderList(year, month, day)
+    // that.getOrderList(year, month, day)
     that.setData({
       dateActive: e.currentTarget.dataset.index,
       orderDate: year + '-' + month + '-' + day,
@@ -447,9 +454,22 @@ getOrderList(year, month,day) {
         that.setData({
           timePeriod: that.data.timePeriod
         })
+        var month_td;
+        var day_td;
+        if (that.data.month < 10) {
+          month_td = "0" + that.data.month;
+        }else{
+          month_td = that.data.month;
+        }
+        if (that.data.day < 10) {
+          day_td = "0" + that.data.day;
+        }else{
+          day_td = that.data.day;
+        }
+        var orderD = that.data.year + '-' + month_td + '-' + day_td;
         http.toOrder({
           data:{
-            orderDate: that.data.orderDate,
+            orderDate: orderD,
             timesIds: timesIds,
             roomId: that.data.roomId,
             userId:that.data.userId,
@@ -458,11 +478,11 @@ getOrderList(year, month,day) {
           success(res){
             if (res.message=='预约成功'){
               that.success();
-              setTimeout(function () {
-                wx.switchTab({
-                  url: '/pages/index/index',
-                })
-              }, 2000)
+              // setTimeout(function () {
+              //   wx.switchTab({
+              //     url: '/pages/index/index',
+              //   })
+              // }, 2000)
             }
           },fail(){
 
