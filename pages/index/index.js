@@ -39,7 +39,7 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    that.checkOpenId();
+    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -92,6 +92,7 @@ Page({
   },*/
   onShow: function () { 
     var that = this;
+    that.checkOpenId();
     that.getHysList();
   },
   navTo(e) {

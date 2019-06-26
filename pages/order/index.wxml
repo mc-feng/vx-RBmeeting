@@ -46,11 +46,15 @@
 <view class="meeting">
   <view class="meeting-box">
     <text>会议主题：</text>
+    <cover-view>
   <input placeholder="请添加会议主题" value="{{theme}}" bindinput="inputTheme"></input>
+  </cover-view>
   </view>
    <view class="meeting-box">
     <text>使用人：</text>
+    <cover-view>
     <input placeholder="请添加使用人" value="{{userName}}" bindinput="inputUserName"></input>
+    </cover-view>
   </view>
 </view>
 <button class="order-btn" bindtap="confirm">确认预约</button>

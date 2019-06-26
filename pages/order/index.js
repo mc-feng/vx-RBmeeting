@@ -446,26 +446,18 @@ getOrderList(year, month,day) {
       }else{
         var timesIds = '';
         for (var i = 0; i < that.data.time_period.length;i++){
-          timesIds = timesIds + that.data.time_period[i]+(',');
-          
+          that.data.time_period = that.data.time_period.sort();
+          that.data.time_period_number = that.data.time_period_number.sort();
+          if (i == that.data.time_period.length-1){
+            timesIds = timesIds + that.data.time_period[i];
+          }else{
+            timesIds = timesIds + that.data.time_period[i] + (',');
+          }
           that.data.timePeriod.push(that.data.timesList[that.data.time_period_number[i]]);
         }
         that.setData({
           timePeriod: that.data.timePeriod
         })
-        // var month_td;
-        // var day_td;
-        // if (that.data.month < 10) {
-        //   month_td = "0" + that.data.month;
-        // }else{
-        //   month_td = that.data.month;
-        // }
-        // if (that.data.day < 10) {
-        //   day_td = "0" + that.data.day;
-        // }else{
-        //   day_td = that.data.day;
-        // }
-        // var orderD = that.data.year + '-' + month_td + '-' + day_td;
         http.toOrder({
           data:{
             orderDate: that.data.orderDate,
@@ -477,11 +469,6 @@ getOrderList(year, month,day) {
           success(res){
             if (res.message=='预约成功'){
               that.success();
-              // setTimeout(function () {
-              //   wx.switchTab({
-              //     url: '/pages/index/index',
-              //   })
-              // }, 2000)
             }
           },fail(){
 
