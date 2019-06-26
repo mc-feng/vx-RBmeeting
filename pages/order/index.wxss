@@ -137,17 +137,26 @@ Page{
   width:492rpx;
 }
 .date-right-item{
-  width:146rpx;
-  height:34rpx;
+  width:210rpx;
+  height:74rpx;
   background: #FFFFFF;
   border: 2rpx solid #F03F24;
   border-radius: 16rpx;
-  padding:20rpx 30rpx;
+  /* padding:20rpx 30rpx 20rpx 30rpx; */
   line-height:34rpx;
   box-sizing: inherit;
   float:left;
   margin-right:24rpx;
   margin-bottom:24rpx;
+  position:relative;
+}
+.time-middle{
+  width:146rpx;
+  height:34rpx;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 .date-right-item text{
   font-family: PingFangSC-Regular;

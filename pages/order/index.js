@@ -242,7 +242,7 @@ getOrderList(year, month,day) {
           data: {
             name: that.data.name,
             phone: that.data.phoneNumber,
-            openId:that.data.openId,
+            openId:app.globalData.openId,
           },
           success(res){
             if(res.message=='用户不存在'){

@@ -30,11 +30,14 @@
   <scroll-view scroll-y='true' style='height:864rpx;'>
     <checkbox-group class="date-right">
     <checkbox wx:for="{{timesList}}" wx:key="{{index}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}}  " bindtap="{{item.canSelect==true?'choose':''}}" data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}">
-      <!-- <icon class="iconfont order-yes time-dur"></icon> -->
+
+      
+    <view class="time-middle">
       <image src="../../img/yued.png" class='yue' wx:if="{{item.canSelect==false}}"></image>
       <image src="../../img/yu.png" class='yue' wx:if="{{(item.canSelect==true)&&(item.isSelect==0)}}"></image>
       <image src="../../img/yub.png" class='yue' wx:if="{{(item.isSelect==1)&&(item.canSelect==true)}}"></image>
     <text>{{item.startTime}}~{{item.endTime}}</text>
+    </view>
     </checkbox>
   </checkbox-group>
   </scroll-view>
