@@ -8,6 +8,7 @@
   <image src="../../../images/personal/headerB.png" class="headerB"></image>
   <image src="../../../images/personal/headerB.png" class="headerL"></image>
 </view>
+
 <block wx-if="{{result.length==0}}">
   <view class="noResult">暂无历史记录</view>
 </block>
@@ -15,7 +16,7 @@
   <view class='content'>
     <!-- 预约选项 -->
     <view class='item-content'>
-    <view class='yuyue-item-warp' wx:for="{{result}}"  wx:key="{{index}}"> 
+    <view class='yuyue-item-warp' wx:for="{{result}}"  wx:key="{{index}}">
       <view class='yuyue-item'>
           <view class='yuyue-top'>
             <view class='yuyue-top-font'>
@@ -35,4 +36,3 @@
     </view>
   </view>
 </block>
-
