@@ -26,7 +26,13 @@ Page({
     userName:'',
     time_period:[],
     timePeriod:[],
-    openId: app.globalData.openId
+    openId: app.globalData.openId,
+    changeStatusThemeIpt:true,
+    changeStatusUserIpt:true,
+    theTheme:'请添加会议主题',
+    theUser:'请添加使用人',
+    bfcolorTheme:true,
+    bfcolorUser: true,
     // animationData: {},
   },
 
@@ -165,6 +171,52 @@ getOrderList(year, month,day) {
       time_period_number:per,
       time_period: that.data.time_period,
       timesList: that.data.timesList,
+    })
+  },
+  changeStatusTheme(){
+    console.log('aaa')
+    var that = this;
+    that.setData({
+      changeStatusThemeIpt: !that.data.changeStatusThemeIpt
+    })
+  },
+  changeStatusThemeBlur(){
+    var that = this;
+    if (that.data.theme==''){
+      that.setData({
+        changeStatusThemeIpt: !that.data.changeStatusThemeIpt,
+        theTheme: '请添加会议主题',
+        bfcolorTheme:true
+      })
+    }else{
+
+      that.setData({
+        changeStatusThemeIpt: !that.data.changeStatusThemeIpt,
+        theTheme: that.data.theme,
+        bfcolorTheme: false
+      })
+    }
+  },
+  changeStatusUserBlur(){
+    var that = this;
+    if (that.data.userName == '') {
+      that.setData({
+        changeStatusUserIpt: !that.data.changeStatusUserIpt,
+        theUser: '请添加使用人',
+        bfcolorUser:true
+      })
+    } else {
+      that.setData({
+        changeStatusUserIpt: !that.data.changeStatusUserIpt,
+        theUser: that.data.userName,
+        bfcolorUser: false
+      })
+    }
+  },
+  changeStatusUser(){
+    var that = this;
+    that.setData({
+      changeStatusUserIpt: !that.data.changeStatusUserIpt
     })
   },
   /*登陆*/
@@ -401,8 +453,9 @@ getOrderList(year, month,day) {
   },
   /*打电话*/
   makePhone(){
+    var that = this;
     wx.makePhoneCall({
-      phoneNumber: phoneNumber
+      phoneNumber: that.data.phoneNumbers
     })
   },
   /*点击日期进行切换*/

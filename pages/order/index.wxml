@@ -45,25 +45,25 @@
 </view>
 <view class="meeting">
   <view class="meeting-box">
-    <text>会议主题：</text>
-    <cover-view>
-  <input placeholder="请添加会议主题" value="{{theme}}" bindinput="inputTheme"></input>
-  </cover-view>
+    <text class="meet-a">会议主题：</text>
+    <text class="ipt-meet theme-ipt {{bfcolorTheme==true?'place-meet':''}}" bindtap="changeStatusTheme" wx:if="{{changeStatusThemeIpt}}">{{theTheme}}</text>
+  <input placeholder="请添加会议主题" wx:if="{{!changeStatusThemeIpt}}" auto-focus="true" value="{{theme}}" placeholder-class='place-meet' bindblur="changeStatusThemeBlur" bindinput="inputTheme" ></input>
   </view>
    <view class="meeting-box">
-    <text>使用人：</text>
-    <cover-view>
-    <input placeholder="请添加使用人" value="{{userName}}" bindinput="inputUserName"></input>
-    </cover-view>
+    <text class="meet-a">使用人：</text>
+    <text class="ipt-meet user-ipt {{bfcolorUser==true?'place-meet':''}}" bindtap="changeStatusUser" wx:if="{{changeStatusUserIpt}}">{{theUser}}</text>
+    <input placeholder="请添加使用人" placeholder-class='place-meet' wx:if="{{!changeStatusUserIpt}}" value="{{userName}}" auto-focus="true" bindblur="changeStatusUserBlur" bindinput="inputUserName"></input>
   </view>
 </view>
 <button class="order-btn" bindtap="confirm">确认预约</button>
+
 
 <vtoast flow="{{complete}}">
   <view class="msg-box complete-box">
   <view class="tips">
         <view class="tips-box">
-          <icon class="iconfont tips-icon complete-icon"></icon>
+          <!-- <icon class="iconfont tips-icon complete-icon"></icon> -->
+          <image src="../../img/wanshanxinxi.png"></image>
         </view>
     </view>
     <form class="msg-form">
@@ -89,7 +89,7 @@
       </view>
       <text class="tips-text">请完善您的信息再进行预约哦</text>
       
-      <cover-view class="confirm firm-btn" bindtap="checkComplete">确认</cover-view>
+      <button class="confirm firm-btn" bindtap="checkComplete">确认</button>
 
     </form>
   </view>
@@ -98,7 +98,8 @@
   <view class="msg-box wrong-box">
     <view class="tips">
         <view class="tips-box">
-          <icon class="iconfont tips-icon wrong-icon"></icon>
+          <!-- <icon class="iconfont tips-icon wrong-icon"></icon> -->
+          <image src="../../img/cuowu.png"></image>
         </view>
     </view>
     <form class="msg-form">
@@ -117,7 +118,8 @@
   <view class="msg-box success-box">
   <view class="tips">
       <view class="tips-box">
-        <icon class="iconfont tips-icon right-icon"></icon>
+        <!-- <icon class="iconfont tips-icon right-icon"></icon> -->
+        <image src="../../img/chenggong.png"></image>
       </view>
   </view>
     <form class="msg-form">

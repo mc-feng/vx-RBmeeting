@@ -39,7 +39,6 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -104,6 +103,9 @@ Page({
     var that = this;
     http.rooms({
       success(res) {
+        that.setData({
+          city: [],
+        })
         that.data.city.push(res.data[0].city)
         // for (var i = 0; i < res.data.length; i++) {
         //   that.data.city.push(res.data[i].city)
