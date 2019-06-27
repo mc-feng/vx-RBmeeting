@@ -157,41 +157,87 @@ getOrderList(year, month,day) {
   choose(e){
     var that = this;
     var index = e.currentTarget.dataset.index;
+    
     var per = that.data.time_period_number;/*选中时间段的集合*/
       if (per.length == 0) {/*第一次点击 加入选中集合，样式改变*/
         per.push(e.currentTarget.dataset.index);
         // that.data.timePeriod.push(e.currentTarget.dataset.period);
         that.data.time_period.push(e.currentTarget.dataset.timesid);
         that.data.timesList[index].isSelect = 1;
-      } else {/*第二次点击*/
-        if (per[per.length - 1] - Number(e.currentTarget.dataset.index) == 1 || per[per.length - 1] - Number(e.currentTarget.dataset.index) == -1) {/*第多次点击且连续*/
-          per.push(e.currentTarget.dataset.index);/*加入选中集合*/
-          // that.data.timePeriod.push(e.currentTarget.dataset.period);
-          that.data.time_period.push(e.currentTarget.dataset.timesid);
-          that.data.timesList[index].isSelect = 1;/*样式改变 被选中*/
-        } 
-        else if (per.indexOf(Number(e.currentTarget.dataset.index))>-1){/*当前点击的时间段如果是刚刚已点过的*/
-          for (var i = 0; i < per.length; i++) {
-            that.data.timesList[i].isSelect = 0;/*样式改变 未被选中*/
+      } 
+      /*// else if(per.length==1){
+      //   that.data.timesList[index].isSelect = 0;
+      //   per.pop(e.currentTarget.dataset.index);
+      //   that.data.time_period.pop(e.currentTarget.dataset.timesid);
+      // }*/
+      else {/*第多次点击*/
+        if (per.indexOf(e.currentTarget.dataset.index)>-1){/*点击已点*/
+          if (e.currentTarget.dataset.index == per[0] ) { /*如果点击的是第一个数据，取消*/
+            console.log(e.currentTarget.dataset.index)
+            that.data.timesList[index].isSelect = 0;
+            per.splice(0,1);
+            that.data.time_period.splice(0,1);
+          } else if (e.currentTarget.dataset.index == per[per.length - 1]) {/*如果点击的是最后一个数据，取消*/
+            that.data.timesList[index].isSelect = 0;
+            per.splice(per.length-1,1);
+            that.data.time_period.splice(that.data.time_period.length-1);
+          } 
+          else {/*点的是已点且非两头数据*/
+
           }
-          per = [];
-          that.data.time_period = [];
-        }
-        else {/*第多次点击但不连续*/
-          for (var i = 0; i < that.data.timesList.length; i++) {
-            that.data.timesList[i].isSelect = 0;
-          }/*把所有的样式清空*/
-          that.data.timesList[index].isSelect = 1;/*当前样式改变*/
-          wx.showToast({
-            title: '多选时段请连续～',
-            icon: 'none'
-          })
-          per = [];/*清空选中时间段的集合*/
-          that.data.time_period = [];
-          per.push(e.currentTarget.dataset.index)/*把当中选中时间段加入集合*/
-          that.data.time_period.push(e.currentTarget.dataset.timesid);
+        }else{/*点击未点*/
+          if (per[per.length - 1] - Number(e.currentTarget.dataset.index) == 1 || per[per.length - 1] - Number(e.currentTarget.dataset.index) == -1){/*点击的是连续的*/
+            that.data.timesList[e.currentTarget.dataset.index].isSelect = 1;
+             per.push(e.currentTarget.dataset.index);
+             that.data.time_period.push(e.currentTarget.dataset.timesid);
+          }else{/*点击的是不连续的*/
+              for (var i = 0; i < that.data.timesList.length; i++) {
+              that.data.timesList[i].isSelect = 0;
+            }/*把所有的样式清空*/
+            that.data.timesList[index].isSelect = 1;/*当前样式改变*/
+            wx.showToast({
+              title: '多选时段请连续～',
+              icon: 'none'
+            })
+            per = [];/*清空选中时间段的集合*/
+            that.data.time_period = [];
+            per.push(e.currentTarget.dataset.index)/*把当中选中时间段加入集合*/
+            that.data.time_period.push(e.currentTarget.dataset.timesid);
+          }
+          // if (per[per.length - 1] - Number(e.currentTarget.dataset.index) == 1 || per[per.length - 1] - Number(e.currentTarget.dataset.index) == -1) {/*点击新时间段*/
+          // }
+          //  else if (e.currentTarget.dataset.index == per[0] || e.currentTarget.dataset.index == per[per.length - 1]) {
+
+          //    that.data.timesList[index].isSelect = 0;
+          //    per.pop(e.currentTarget.dataset.index);
+          //    that.data.time_period.pop(e.currentTarget.dataset.timesid);
+          //  }
+          // else if (per.indexOf(Number(e.currentTarget.dataset.index))>-1){/*当前点击的时间段如果是刚刚已点过的*/
+          // console.log('aaa')
+          //   for (var i = 0; i < per.length; i++) {
+          //     that.data.timesList[i].isSelect = 0;/*样式改变 未被选中*/
+          //   }
+          //   per = [];
+          //   that.data.time_period = [];
+          // }
+          // else {/*第多次点击但不连续*/
+          //   for (var i = 0; i < that.data.timesList.length; i++) {
+          //     that.data.timesList[i].isSelect = 0;
+          //   }/*把所有的样式清空*/
+          //   that.data.timesList[index].isSelect = 1;/*当前样式改变*/
+          //   wx.showToast({
+          //     title: '多选时段请连续～',
+          //     icon: 'none'
+          //   })
+          //   per = [];/*清空选中时间段的集合*/
+          //   that.data.time_period = [];
+          //   per.push(e.currentTarget.dataset.index)/*把当中选中时间段加入集合*/
+          //   that.data.time_period.push(e.currentTarget.dataset.timesid);
+          // }
         }
       }
+      console.log(per)
+    console.log(that.data.time_period)
     that.setData({
       time_period_number:per,
       time_period: that.data.time_period,
