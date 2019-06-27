@@ -72,6 +72,8 @@ Page({
   /*获取时间段列表*/
   getTimeList(year,month,day){
     var that = this;
+    
+    
     http.timesList({
       success(res) {
         for (var i = 0; i < res.data.length; i++) {
@@ -79,6 +81,7 @@ Page({
           res.data[i].isSelect = 0;
         }
         that.getOrderList(year, month, day);
+        
         that.setData({
           timesList: res.data
         })
@@ -98,6 +101,16 @@ getOrderList(year, month,day) {
       day = "0" + day;
     }
     var orderDate = year+'-'+month+'-'+day;
+  var now = new Date();
+  var year_s = now.getFullYear();
+  var month_s = now.getMonth() + 1;
+  var day_s = now.getDate();
+  if (month_s < 10) {
+    month_s = "0" + month_s;
+  }
+  if (day_s < 10) {
+    day_s = "0" + day_s;
+  }
     http.orderList({
       data:{
         orderDate: orderDate,
@@ -108,9 +121,21 @@ getOrderList(year, month,day) {
         that.setData({
           orderList: res.data
         })
-        
+        for (var n = 0; n < that.data.timesList.length; n++) {
+          if (year == year_s && month == month_s && day == day_s) {  /*如果是当前日期则判断过时*/
+            var timestamp1 = new Date().getTime();
+            var q = that.data.year + '-' + month_s + '-' + day_s + ' ' + that.data.timesList[n].timestamp;
+            var timestamp2 = new Date(q).getTime();
+            if ((timestamp1 - timestamp2) > 0) {
+              that.data.timesList[n].canSelect = false;
+            }
+          }
+        }
+        that.setData({
+          timesList: that.data.timesList
+        })
         if (that.data.orderList.length==0){
-          
+
         }else{
           for (var i = 0; i < that.data.orderList.length;i++){
             for (var j = 0; j < that.data.timesList.length; j++) {
@@ -119,6 +144,7 @@ getOrderList(year, month,day) {
               }
             }
           }
+          
           that.setData({
             timesList: that.data.timesList
           })
@@ -132,7 +158,6 @@ getOrderList(year, month,day) {
     var that = this;
     var index = e.currentTarget.dataset.index;
     var per = that.data.time_period_number;/*选中时间段的集合*/
-
       if (per.length == 0) {/*第一次点击 加入选中集合，样式改变*/
         per.push(e.currentTarget.dataset.index);
         // that.data.timePeriod.push(e.currentTarget.dataset.period);
@@ -247,14 +272,12 @@ getOrderList(year, month,day) {
     })
   },
   success_ok(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
     this.setData({
       success: !this.data.success
     })
-    setTimeout(function () {
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    }, 2000)
   },
   /*错误弹窗弹出*/
   wrong(){

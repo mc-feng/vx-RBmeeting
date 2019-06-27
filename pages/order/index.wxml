@@ -76,12 +76,12 @@
       <view class="project-item">
         <view class="project">姓名</view>
         <text class="emp">:</text>
-        <input placeholder="请输入姓名" placeholder-class='pro-ipt' value="{{name}}" bindinput='nameIpt'></input>
+        <input placeholder="请输入姓名" maxlength="4" placeholder-class='pro-ipt' value="{{name}}" bindinput='nameIpt'></input>
       </view>
       <view class="project-item">
         <view class="project">手机</view>
         <text class="emp">:</text>
-        <input placeholder="请输入手机号码" placeholder-class='pro-ipt'value="{{phoneNumber}}" bindinput='phoneIpt'></input>
+        <input placeholder="请输入手机号码" maxlength="11" placeholder-class='pro-ipt'value="{{phoneNumber}}" bindinput='phoneIpt'></input>
       </view>
       <view class="project-item">
         <text class="contact">联系我们：{{phoneNumbers}}</text>
@@ -103,7 +103,7 @@
         </view>
     </view>
     <form class="msg-form">
-      <text class="tips-title">错误</text>
+      <text class="tips-title">错误！</text>
       <text class="tips-first">啊哦～找不到您的信息！</text>
       <text class="tips-secend">请先联系管理员登记信息</text>
       <view class="project-item1">

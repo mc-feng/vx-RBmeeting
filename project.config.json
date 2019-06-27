@@ -14,7 +14,6 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
-
 	"appid": "wx163f390dc08a8531",
 	"projectname": "xiangmu",
 	"debugOptions": {
@@ -47,7 +46,7 @@
 					"id": 0,
 					"name": "预约页面",
 					"pathName": "pages/order/index",
-					"query": "roomId=1&&roomname=圆桌骑士",
+					"query": "roomId=1&&roomName=圆桌骑士",
 					"scene": null
 				}
 			]
