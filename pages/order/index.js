@@ -199,7 +199,6 @@ getOrderList(year, month,day) {
     })
   },
   changeStatusTheme(){
-    console.log('aaa')
     var that = this;
     that.setData({
       changeStatusThemeIpt: !that.data.changeStatusThemeIpt
@@ -306,7 +305,7 @@ getOrderList(year, month,day) {
         icon: "none"
       })
     } else {
-      var reg = /^(130|131|132|133|134|135|136|137|138|139|150|153|157|158|159|180|187|170|177|188|189)\d{8}$/;
+      var reg = /^\d{11}$/;
       if (!reg.test(that.data.phoneNumber)) {
         wx.showToast({
           title: '手机号码格式错误，请重输',
