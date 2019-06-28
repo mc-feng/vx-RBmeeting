@@ -142,7 +142,6 @@ Page{
   background: #FFFFFF;
   border: 2rpx solid #F03F24;
   border-radius: 16rpx;
-  /* padding:20rpx 30rpx 20rpx 30rpx; */
   line-height:34rpx;
   box-sizing: inherit;
   float:left;
@@ -152,7 +151,7 @@ Page{
 }
 .time-middle{
   height:34rpx;
-  margin:20rpx 30rpx 20rpx 30rpx;
+  margin:20rpx 27rpx 20rpx 27rpx;
 }
 .date-right-item text{
   font-family: PingFangSC-Regular;
@@ -207,14 +206,25 @@ checkbox .wx-checkbox-input{
    position:absolute;
    z-index:-1;
 }
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{zoom:1}
+.scroll-box{
+  
+}
 /*date end 会议详情start*/
 .meeting{
-  margin:10rpx 28rpx 0 28rpx;
-  border-radius:18rpx;
-  background:#fff;
-  padding:20rpx 0;
+ 
+  
+  width:100%;
   position:fixed;
   bottom:122rpx;
+  
+}
+.meeting-container{
+ margin:10rpx 28rpx 0 28rpx;
+ border-radius:18rpx;
+ padding:20rpx 0;
+ background:#fff;
 }
 .meeting-box{
   width:100%;
@@ -244,6 +254,7 @@ checkbox .wx-checkbox-input{
   height:110rpx;
   line-height:110rpx;
   position:fixed;
+  z-index:9;
   bottom:0;
   left:0;
   font-family: PingFangSC-Regular;
@@ -540,14 +551,19 @@ margin-right:10rpx;
   /* display: none; */
 }
 .ipt-meet{
-  width:340rpx;
+  width:480rpx;
   margin-left:0;
   font-family: PingFangSC-Regular;
   font-size: 32rpx;
   color: #000;
   line-height: 54rpx;
-  display:block;
-  float:left;
+  display: inline-block;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.meet-box-ipt{
+  width:480rpx;
 }
 .place-meet{
   color: #BFBFBF;

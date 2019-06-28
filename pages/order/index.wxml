@@ -27,8 +27,8 @@
       <icon class="iconfont local"></icon>
     </view>
   </view>
-  <scroll-view scroll-y='true' style='height:864rpx;'>
-    <checkbox-group class="date-right">
+  <scroll-view scroll-y='true' style='height:864rpx;' class="scroll-box">
+    <checkbox-group class="date-right clearfix">
     <checkbox wx:for="{{timesList}}" wx:key="{{index}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}}  " bindtap="{{item.canSelect==true?'choose':''}}" data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}">
 
       
@@ -44,16 +44,19 @@
   
 </view>
 <view class="meeting">
-  <view class="meeting-box">
-    <text class="meet-a">会议主题：</text>
-    <text class="ipt-meet theme-ipt {{bfcolorTheme==true?'place-meet':''}}" bindtap="changeStatusTheme" wx:if="{{changeStatusThemeIpt}}">{{theTheme}}</text>
-  <input placeholder="请添加会议主题" wx:if="{{!changeStatusThemeIpt}}" auto-focus="true" value="{{theme}}" placeholder-class='place-meet' bindblur="changeStatusThemeBlur" bindinput="inputTheme" ></input>
+  <view class="meeting-container">
+    <view class="meeting-box">
+      <text class="meet-a">会议主题：</text>
+      <text class="ipt-meet theme-ipt {{bfcolorTheme==true?'place-meet':''}}" bindtap="changeStatusTheme" wx:if="{{changeStatusThemeIpt}}">{{theTheme}}</text>
+    <input placeholder="请添加会议主题" class="meet-box-ipt" wx:if="{{!changeStatusThemeIpt}}" maxlength='20' auto-focus="true" value="{{theme}}" placeholder-class='place-meet' bindblur="changeStatusThemeBlur" bindinput="inputTheme" ></input>
+    </view>
+    <view class="meeting-box">
+      <text class="meet-a">使用人：</text>
+      <text class="ipt-meet user-ipt {{bfcolorUser==true?'place-meet':''}}" bindtap="changeStatusUser" wx:if="{{changeStatusUserIpt}}">{{theUser}}</text>
+      <input placeholder="请添加使用人" placeholder-class='place-meet' maxlength='7' wx:if="{{!changeStatusUserIpt}}" value="{{userName}}" auto-focus="true" bindblur="changeStatusUserBlur" bindinput="inputUserName"></input>
+    </view>
   </view>
-   <view class="meeting-box">
-    <text class="meet-a">使用人：</text>
-    <text class="ipt-meet user-ipt {{bfcolorUser==true?'place-meet':''}}" bindtap="changeStatusUser" wx:if="{{changeStatusUserIpt}}">{{theUser}}</text>
-    <input placeholder="请添加使用人" placeholder-class='place-meet' wx:if="{{!changeStatusUserIpt}}" value="{{userName}}" auto-focus="true" bindblur="changeStatusUserBlur" bindinput="inputUserName"></input>
-  </view>
+  
 </view>
 <button class="order-btn" bindtap="confirm">确认预约</button>
 
@@ -76,7 +79,7 @@
       <view class="project-item">
         <view class="project">姓名</view>
         <text class="emp">:</text>
-        <input placeholder="请输入姓名" maxlength="4" placeholder-class='pro-ipt' value="{{name}}" bindinput='nameIpt'></input>
+        <input placeholder="请输入姓名" maxlength='7' placeholder-class='pro-ipt' value="{{name}}" bindinput='nameIpt'></input>
       </view>
       <view class="project-item">
         <view class="project">手机</view>

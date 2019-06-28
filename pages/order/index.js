@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    systemInfo:{},
     url: app.globalData.url,
     name:'',
     phoneNumbers: app.globalData.phoneNumber,
@@ -41,6 +42,14 @@ Page({
    */
   onLoad: function (options) {
     var now = new Date();
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          systemInfo: res
+        })
+      }
+    })
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var day = now.getDate();
@@ -117,14 +126,18 @@ getOrderList(year, month,day) {
         roomId: that.data.roomId
       },
       success(res){
-
         that.setData({
           orderList: res.data
         })
         for (var n = 0; n < that.data.timesList.length; n++) {
+          var timestamp1 = new Date().getTime();
           if (year == year_s && month == month_s && day == day_s) {  /*如果是当前日期则判断过时*/
-            var timestamp1 = new Date().getTime();
-            var q = that.data.year + '-' + month_s + '-' + day_s + ' ' + that.data.timesList[n].timestamp;
+            
+            if (that.data.systemInfo.platform == "ios") {
+              var q = that.data.year + '/' + month_s + '/' + day_s + ' ' + that.data.timesList[n].timestamp;
+            } else {
+              var q = that.data.year + '-' + month_s + '-' + day_s + ' ' + that.data.timesList[n].timestamp;
+            }
             var timestamp2 = new Date(q).getTime();
             if ((timestamp1 - timestamp2) > 0) {
               that.data.timesList[n].canSelect = false;
@@ -358,26 +371,66 @@ getOrderList(year, month,day) {
           icon: "none"
         })
       } else {
+        var that = this;
         http.banding({
           data: {
             name: that.data.name,
             phone: that.data.phoneNumber,
-            openId:app.globalData.openId,
+            openId: app.globalData.openId,
           },
-          success(res){
-            if(res.message=='用户不存在'){
+          success(res) {
+            if (res.message == '用户不存在') {
               that.wrong();
-            }else{
+            } else {
               wx.showToast({
                 title: res.message,
-                icon:'none'
+                icon: 'none'
+              })
+              http.login({
+                data: {
+                  openId: app.globalData.openId
+                },
+                success(res) {
+                  if (res.message == '登录失败') {
+                   
+                  } else {
+                    that.setData({
+                      userId: res.data[0].userId
+                    })
+                  }
+
+                }, fail() {
+
+                }
               })
             }
           },
-          fail(){
+          fail() {
             that.wrong();
           }
         })
+        // setTimeout(function({
+        //   http.banding({
+        //     data: {
+        //       name: that.data.name,
+        //       phone: that.data.phoneNumber,
+        //       openId: app.globalData.openId,
+        //     },
+        //     success(res) {
+        //       if (res.message == '用户不存在') {
+        //         that.wrong();
+        //       } else {
+        //         wx.showToast({
+        //           title: res.message,
+        //           icon: 'none'
+        //         })
+        //       }
+        //     },
+        //     fail() {
+        //       that.wrong();
+        //     }
+        //   },100)
+        // })
         that.complete();
       }
     }
