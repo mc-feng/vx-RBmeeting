@@ -13,6 +13,7 @@ Page({
     phoneNumbers: app.globalData.phoneNumber,
     success:'',
     wrong:'',
+    yuyue:'',
     complete:'',
     dayList:[],
     index:0,
@@ -30,11 +31,11 @@ Page({
     openId: app.globalData.openId,
     changeStatusThemeIpt:true,
     changeStatusUserIpt:true,
-    theTheme:'请添加会议主题',
+    theTheme:'技术部门，产品UI细节调整、DB接口、开发联调、测试部署',
     theUser:'请添加使用人',
     bfcolorTheme:true,
     bfcolorUser: true,
-    // animationData: {},
+    timeUserName:''
   },
 
   /**
@@ -81,12 +82,11 @@ Page({
   /*获取时间段列表*/
   getTimeList(year,month,day){
     var that = this;
-    
-    
     http.timesList({
       success(res) {
         for (var i = 0; i < res.data.length; i++) {
           res.data[i].canSelect = true;
+          res.data[i].selected = true;
           res.data[i].isSelect = 0;
         }
         that.getOrderList(year, month, day);
@@ -99,10 +99,24 @@ Page({
       }
     })
   },
+  /*点击提示已被预约过*/
+  chooseEd(e){
+    var that = this;
+    for (var i = 0; i < that.data.orderList.length;i++){
+      if (e.currentTarget.dataset.timesid == that.data.orderList[i].timesId ){
+          that.setData({
+            timeUserName: that.data.orderList[i].userName,
+          })
+          that.yuyueEd();
+      }else{
+
+      }
+    }
+    
+  },
   /*获取当前日期的已预约列表*/
 getOrderList(year, month,day) {
     var that = this;
-
     if(month<10){
       month = "0"+month;
     }
@@ -154,6 +168,7 @@ getOrderList(year, month,day) {
             for (var j = 0; j < that.data.timesList.length; j++) {
               if (that.data.orderList[i].timesId == that.data.timesList[j].timesId){
                 that.data.timesList[j].canSelect = false;
+                that.data.timesList[j].selected = false;
               }
             }
           }
@@ -268,7 +283,7 @@ getOrderList(year, month,day) {
     if (that.data.theme==''){
       that.setData({
         changeStatusThemeIpt: !that.data.changeStatusThemeIpt,
-        theTheme: '请添加会议主题',
+        theTheme: '技术部门，产品UI细节调整、DB接口、开发联调、测试部署',
         bfcolorTheme:true
       })
     }else{
@@ -350,6 +365,12 @@ getOrderList(year, month,day) {
       complete: !this.data.complete
     })
   },
+  yuyueEd(){
+    var that = this;
+    that.setData({
+      yuyue: !this.data.yuyue
+    })
+  },
   /*检查完善信息弹窗内容*/
   checkComplete(){
     var that = this;
@@ -379,7 +400,7 @@ getOrderList(year, month,day) {
             openId: app.globalData.openId,
           },
           success(res) {
-            if (res.message == '用户不存在') {
+            if (res.code == 300) {
               that.wrong();
             } else {
               wx.showToast({
@@ -391,7 +412,7 @@ getOrderList(year, month,day) {
                   openId: app.globalData.openId
                 },
                 success(res) {
-                  if (res.message == '登录失败') {
+                  if (res.code == 200) {
                    
                   } else {
                     that.setData({
@@ -409,28 +430,6 @@ getOrderList(year, month,day) {
             that.wrong();
           }
         })
-        // setTimeout(function({
-        //   http.banding({
-        //     data: {
-        //       name: that.data.name,
-        //       phone: that.data.phoneNumber,
-        //       openId: app.globalData.openId,
-        //     },
-        //     success(res) {
-        //       if (res.message == '用户不存在') {
-        //         that.wrong();
-        //       } else {
-        //         wx.showToast({
-        //           title: res.message,
-        //           icon: 'none'
-        //         })
-        //       }
-        //     },
-        //     fail() {
-        //       that.wrong();
-        //     }
-        //   },100)
-        // })
         that.complete();
       }
     }
@@ -443,21 +442,13 @@ getOrderList(year, month,day) {
   /*填写会议主题*/
   inputTheme(e){
     var that = this;
+    console.log(e.detail.value)
     that.setData({
       theme:e.detail.value
     })
   },
   scrollDown(){
-    // console.log('aaaaa')
-    // var animation = wx.createAnimation({
-    //   duration: 600,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
-    //   timingFunction: 'ease',//动画的效果 默认值是linear
-    // })
-    // this.animation = animation
-    // this.animation.translateY(-56).step()
-    // this.setData({
-    //   animationData: this.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
-    // })
+    
   },
   /*退出*/
   exit(){
@@ -634,6 +625,7 @@ getOrderList(year, month,day) {
         })
         http.toOrder({
           data:{
+            theme:that.data.theme,
             orderDate: that.data.orderDate,
             timesIds: timesIds,
             roomId: that.data.roomId,
@@ -641,8 +633,21 @@ getOrderList(year, month,day) {
             userName: that.data.userName
           },
           success(res){
-            if (res.message=='预约成功'){
+            if (res.code==200){
               that.success();
+            } else if (res.code == 300){
+              wx.showToast({
+                title: res.message,
+                icon:"none"
+              });
+              that.setData({
+                timePeriod: [],
+                time_period:[],
+                time_period_number:[]
+              })
+              that.getTimeList(that.data.year, that.data.month_choose, that.data.day_choose);
+            }else{
+
             }
           },fail(){
 

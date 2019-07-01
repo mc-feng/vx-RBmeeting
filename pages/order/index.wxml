@@ -3,12 +3,10 @@
   <i></i>
   <text>选择时间（可多选时段）</text>
   <view class="order-status">
-    <!-- <icon class="iconfont order-no order-icon"></icon> -->
     <image src="../../img/yued.png" class='order-no order-icon'></image>
     <text class="order-no-text">已约满</text>
   </view>
   <view class="order-status">
-    <!-- <icon class="iconfont order-yes order-icon"></icon> -->
     <image src="../../img/yu.png" class='order-yes order-icon'></image>
     <text class="order-yes-text">可预约</text>
   </view>
@@ -19,7 +17,7 @@
     <view>
       <view class="date-item {{index==dateActive?'date-item-active':''}}" wx:for="{{dayList}}" wx:key="{{index}}" bindtap="chooseDate" data-index="{{index}}" data-year="{{item.year}}" data-month="{{item.date}}" data-day="{{item.time}}">
         <text class="date-text">{{item.date<10?('0'+item.date):item.date}}月{{item.time<10?('0'+item.time):item.time}}日</text>
-        <text class="time-text">(周{{item.week}})</text>
+        <text class="time-text">(周 {{item.week}})</text>
       </view>
       </view>
     </scroll-view>
@@ -27,11 +25,9 @@
       <icon class="iconfont local"></icon>
     </view>
   </view>
-  <scroll-view scroll-y='true' style='height:864rpx;' class="scroll-box">
+  <scroll-view scroll-y='true' style='height:810rpx;' class="scroll-box">
     <checkbox-group class="date-right clearfix">
-    <checkbox wx:for="{{timesList}}" wx:key="{{index}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}}  " bindtap="{{item.canSelect==true?'choose':''}}" data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}">
-
-      
+    <checkbox wx:for="{{timesList}}" wx:key="{{index}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}} " bindtap="{{item.canSelect==true?'choose':'chooseEd'}}" data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}" data-selected="{{item.selected}}">
     <view class="time-middle">
       <image src="../../img/yued.png" class='yue' wx:if="{{item.canSelect==false}}"></image>
       <image src="../../img/yu.png" class='yue' wx:if="{{(item.canSelect==true)&&(item.isSelect==0)}}"></image>
@@ -45,18 +41,19 @@
 </view>
 <view class="meeting">
   <view class="meeting-container">
-    <view class="meeting-box">
-      <text class="meet-a">会议主题：</text>
-      <text class="ipt-meet theme-ipt {{bfcolorTheme==true?'place-meet':''}}" bindtap="changeStatusTheme" wx:if="{{changeStatusThemeIpt}}">{{theTheme}}</text>
-    <input placeholder="请添加会议主题" class="meet-box-ipt" wx:if="{{!changeStatusThemeIpt}}" maxlength='20' auto-focus="true" value="{{theme}}" placeholder-class='place-meet' bindblur="changeStatusThemeBlur" bindinput="inputTheme" ></input>
-    </view>
-    <view class="meeting-box">
+   <view class="meeting-box">
       <text class="meet-a">使用人：</text>
       <text class="ipt-meet user-ipt {{bfcolorUser==true?'place-meet':''}}" bindtap="changeStatusUser" wx:if="{{changeStatusUserIpt}}">{{theUser}}</text>
       <input placeholder="请添加使用人" placeholder-class='place-meet' maxlength='7' wx:if="{{!changeStatusUserIpt}}" value="{{userName}}" auto-focus="true" bindblur="changeStatusUserBlur" bindinput="inputUserName"></input>
     </view>
+    <view class="meeting-box meeting-plus">
+      <text class="meet-a">会议主题：</text>
+      <text class="ipt-meet theme-ipt {{bfcolorTheme==true?'place-meet':''}}" bindtap="changeStatusTheme" wx:if="{{changeStatusThemeIpt}}">{{theTheme}}</text>
+     <textarea class="meet-area" maxlength='20' placeholder=''  placeholder-class='place-meets' wx:if="{{!changeStatusThemeIpt}}"  bindinput='inputTheme' value='{{theme}}'  auto-focus="true" bindblur="changeStatusThemeBlur"></textarea>
+       <!-- <text class="ipt-meet theme-ipt {{bfcolorTheme==true?'place-meet':''}}" bindtap="changeStatusTheme" wx:if="{{changeStatusThemeIpt}}">{{theTheme}}</text> -->
+    <!-- <input placeholder="请添加会议主题" class="meet-box-ipt" wx:if="{{!changeStatusThemeIpt}}" maxlength='20' auto-focus="true" value="{{theme}}" placeholder-class='place-meet' bindblur="changeStatusThemeBlur" bindinput="inputTheme" ></input> -->
+    </view>
   </view>
-  
 </view>
 <button class="order-btn" bindtap="confirm">确认预约</button>
 
@@ -65,13 +62,12 @@
   <view class="msg-box complete-box">
   <view class="tips">
         <view class="tips-box">
-          <!-- <icon class="iconfont tips-icon complete-icon"></icon> -->
           <image src="../../img/wanshanxinxi.png"></image>
         </view>
     </view>
     <form class="msg-form">
       <text class="tips-title">完善信息</text>
-          <view class="project-item">
+        <view class="project-item">
         <view class="project">房间号</view>
         <text class="emp">:</text>
         <text class="project-value">{{roomName}}</text>
@@ -91,9 +87,7 @@
         <icon class="iconfont tips-icon phone" bindtap="makePhone"></icon>
       </view>
       <text class="tips-text">请完善您的信息再进行预约哦</text>
-      
       <button class="confirm firm-btn" bindtap="checkComplete">确认</button>
-
     </form>
   </view>
 </vtoast>
@@ -101,7 +95,6 @@
   <view class="msg-box wrong-box">
     <view class="tips">
         <view class="tips-box">
-          <!-- <icon class="iconfont tips-icon wrong-icon"></icon> -->
           <image src="../../img/cuowu.png"></image>
         </view>
     </view>
@@ -121,7 +114,6 @@
   <view class="msg-box success-box">
   <view class="tips">
       <view class="tips-box">
-        <!-- <icon class="iconfont tips-icon right-icon"></icon> -->
         <image src="../../img/chenggong.png"></image>
       </view>
   </view>
@@ -138,6 +130,24 @@
       <text class="tips-text">请准时到达，有疑问可以联系咨询～</text>
       <button class="confirm" bindtap="success_ok">确认</button>
       <text class="tips-text">详细信息可在个人中心-预约记录查看</text>
+    </form>
+  </view>
+</vtoast>
+
+<vtoast flow="{{yuyue}}">
+  <view class="msg-box yuyue-box">
+    <view class="tips">
+        <view class="tips-box">
+          <image src="../../img/cuowu.png"></image>
+        </view>
+    </view>
+    <form class="msg-form">
+      <text class="tips-header">该时段已有预约</text>
+      <view class="tips-toast">
+        <text class="tips-toast-user">预约人：</text>
+        <text class="tips-toast-text">{{timeUserName}} {{}}</text>
+      </view>
+      <button class="close-btn" bindtap="yuyueEd">关闭</button>
     </form>
   </view>
 </vtoast>

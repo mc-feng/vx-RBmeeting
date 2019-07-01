@@ -1,7 +1,6 @@
 /* pages/order/index.wxss */
 Page{
   background:#F8F8F8;
-  padding-bottom:270rpx;
 }
 /*头部start*/
 .top{
@@ -66,7 +65,7 @@ Page{
   overflow:hidden;
 }
 .date-scroll{
-  height:784rpx;
+  height:727rpx;
 }
 .date-left{
   width:200rpx;
@@ -178,6 +177,9 @@ Page{
   height:28rpx;
   float:right;
 }
+.choose-no{
+  border:2rpx solid #BFBFBF;
+}
 .choose-ok icon{
   color: #F03F24;
 }
@@ -213,23 +215,20 @@ checkbox .wx-checkbox-input{
 }
 /*date end 会议详情start*/
 .meeting{
- 
-  
   width:100%;
   position:fixed;
-  bottom:122rpx;
-  
+  bottom:110rpx;
 }
 .meeting-container{
- margin:10rpx 28rpx 0 28rpx;
+ margin:10rpx 0 0 0;
  border-radius:18rpx;
  padding:20rpx 0;
  background:#fff;
+ box-shadow:10rpx -10rpx 48rpx rgba(0,0,0,0.5);
 }
 .meeting-box{
   width:100%;
   height: 54rpx;
-
 }
 .meet-a{
   font-family: PingFangSC-Regular;
@@ -238,6 +237,8 @@ checkbox .wx-checkbox-input{
   line-height: 54rpx;
   display:block;
   float:left;
+  width:160rpx;
+  text-align-last: justify;
   margin-left:26rpx;
 }
 .meeting input{
@@ -289,6 +290,9 @@ checkbox .wx-checkbox-input{
 }
 .complete-box{
   width:644rpx;
+}
+.yuyue-box{
+  width:572rpx;
 }
 .wrong-box{
   width:644rpx;
@@ -558,13 +562,75 @@ margin-right:10rpx;
   color: #000;
   line-height: 54rpx;
   display: inline-block;
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow:ellipsis;
 }
 .meet-box-ipt{
   width:480rpx;
 }
 .place-meet{
   color: #BFBFBF;
+}
+.tips-header{
+  display:block;
+  width:100%;
+  margin-bottom:20rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #000000;
+  margin-top:120rpx;
+  text-align:center;
+}
+.tips-toast{
+  border: 2rpx dotted #F03F24;
+  border-radius: 10rpx;
+  width: 366rpx;
+  padding: 24rpx 0 24rpx 62rpx;
+  font-size: 24rpx;
+  color: #000000;
+  margin:0 auto 20rpx auto;
+}
+.tips-toast-user{
+   font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  display:block;
+}
+.tips-toast-text{
+   font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  display:block;
+  margin-top:20rpx;
+}
+.close-btn{
+  width: 204rpx;
+  height: 76rpx;
+  border: 1px solid #F03F24;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 76rpx;
+  background: #F03F24;
+  color: #fff;
+  font-size: 32rpx;
+  margin-bottom:60rpx;
+  font-family: PingFangSC-Regular;
+  letter-spacing: 0;
+}
+.meeting-plus{
+  height:108rpx;
+}
+.meet-area{
+  float:left;
+  position:static;
+  width:480rpx;
+  height:108rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #000;
+  line-height: 54rpx;
+}
+.place-meets{
+  text-decoration:underline;
+  color: #BFBFBF;
+  line-height: 54rpx;
+}
+.theme-ipt{
+  text-decoration: underline;
 }

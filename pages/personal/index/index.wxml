@@ -64,8 +64,8 @@
       <view>{{showResult.startTime}} ~{{showResult.endTime}}</view>
     </view>
     <view class='toast-buttun-warp'>
-      <button class='button1' bindtap='cancel'>不取消了</button>
-      <button class='button2' bindtap='del'>取消预约</button>
+      <button class='button1' bindtap='cancel'>否</button>
+      <button class='button2' bindtap='del'>是</button>
     </view>
   </view>
 </vtoast>
