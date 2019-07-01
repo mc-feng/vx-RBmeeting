@@ -264,8 +264,6 @@ getOrderList(year, month,day) {
           // }
         }
       }
-      console.log(per)
-    console.log(that.data.time_period)
     that.setData({
       time_period_number:per,
       time_period: that.data.time_period,
@@ -581,7 +579,6 @@ getOrderList(year, month,day) {
     var month = e.currentTarget.dataset.month;
     var day = e.currentTarget.dataset.day;
     that.getTimeList(year,month,day);
-    // that.getOrderList(year, month, day)
     that.setData({
       dateActive: e.currentTarget.dataset.index,
       orderDate: year + '-' + month + '-' + day,
