@@ -145,7 +145,8 @@
       <text class="tips-header">该时段已有预约</text>
       <view class="tips-toast">
         <text class="tips-toast-user">预约人：</text>
-        <text class="tips-toast-text">{{timeUserName}} {{}}</text>
+        <text class="tips-toast-text">{{timeUserName}}</text>
+        <text class="tips-toast-text">{{phone}}</text>
       </view>
       <button class="close-btn" bindtap="yuyueEd">关闭</button>
     </form>

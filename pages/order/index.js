@@ -106,6 +106,7 @@ Page({
       if (e.currentTarget.dataset.timesid == that.data.orderList[i].timesId ){
           that.setData({
             timeUserName: that.data.orderList[i].userName,
+            phone: that.data.orderList[i].phone,
           })
           that.yuyueEd();
       }else{
