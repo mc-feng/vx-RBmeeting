@@ -21,7 +21,7 @@
       </view>
       </view>
     </scroll-view>
-    <view class="pull-btn" bindtap="scrollDown">
+    <view class="pull-btn">
       <icon class="iconfont local"></icon>
     </view>
   </view>

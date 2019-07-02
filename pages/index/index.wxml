@@ -10,7 +10,7 @@
 <view class="content">
   <view class="title">
     <i></i>
-    <text>可预约会议室</text>
+    <text>会议室列表</text>
   </view>
   <view class="cont">
     <scroll-view class="contH" lower-threshold="0"  scroll-y="true">
@@ -22,30 +22,10 @@
           <text class="item-title">{{item.name}}</text>
           <text class="item-describe">{{item.description}}</text>
           <text class="item-local">地址：{{item.path}}</text>
+          <!-- <text class="item-order-btn">已关闭</text> -->
           <button class="item-order" bindtap="navTo" data-roomid="{{item.roomId}}" data-roomname='{{item.name}}'>预约</button>
         </view>
       </view>
     </scroll-view>
   </view>
 </view>
-
-<!-- <view class="container">
-  <view class='item'>
-    <view class='tiao'>预约</view>
-  </view>
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto" bindtap='change'>{{motto}}</text>
-  </view>
-</view>
-<view class='bottom' bindtap='click'>点击我跳弹框</view>
-<bottom id='bots'></bottom>
-<vtoast flow="{{show}}" bind:myevent="onGetShow">
-  <view class='toast'></view>
-</vtoast> -->

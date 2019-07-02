@@ -129,6 +129,20 @@ float:left;
   text-align:center;
   color: #FFFFFF;
 }
+.item-right .item-order-btn{
+  font-weight:600;
+  display:block;
+  margin-top:12rpx;
+  float:right;
+  color:#6D7278;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  line-height:50rpx;
+  width:139rpx;
+  height:50rpx;
+  text-align:center;
+  background:#fff;
+}
 /* 
 .item{
   width: 600rpx;

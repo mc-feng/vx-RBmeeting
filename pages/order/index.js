@@ -44,6 +44,7 @@ Page({
   onLoad: function (options) {
     var now = new Date();
     var that = this;
+    /*判断所使用系统*/
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -116,7 +117,7 @@ Page({
     
   },
   /*获取当前日期的已预约列表*/
-getOrderList(year, month,day) {
+  getOrderList(year, month,day) {
     var that = this;
     if(month<10){
       month = "0"+month;
@@ -125,16 +126,16 @@ getOrderList(year, month,day) {
       day = "0" + day;
     }
     var orderDate = year+'-'+month+'-'+day;
-  var now = new Date();
-  var year_s = now.getFullYear();
-  var month_s = now.getMonth() + 1;
-  var day_s = now.getDate();
-  if (month_s < 10) {
-    month_s = "0" + month_s;
-  }
-  if (day_s < 10) {
-    day_s = "0" + day_s;
-  }
+    var now = new Date();
+    var year_s = now.getFullYear();
+    var month_s = now.getMonth() + 1;
+    var day_s = now.getDate();
+    if (month_s < 10) {
+      month_s = "0" + month_s;
+    }
+    if (day_s < 10) {
+      day_s = "0" + day_s;
+    }
     http.orderList({
       data:{
         orderDate: orderDate,
@@ -193,13 +194,7 @@ getOrderList(year, month,day) {
         // that.data.timePeriod.push(e.currentTarget.dataset.period);
         that.data.time_period.push(e.currentTarget.dataset.timesid);
         that.data.timesList[index].isSelect = 1;
-      } 
-      /*// else if(per.length==1){
-      //   that.data.timesList[index].isSelect = 0;
-      //   per.pop(e.currentTarget.dataset.index);
-      //   that.data.time_period.pop(e.currentTarget.dataset.timesid);
-      // }*/
-      else {/*第多次点击*/
+      }else {/*第多次点击*/
         if (per.indexOf(e.currentTarget.dataset.index)>-1){/*点击已点*/
           if (e.currentTarget.dataset.index == per[0] ) { /*如果点击的是第一个数据，取消*/
             console.log(e.currentTarget.dataset.index)
@@ -233,36 +228,6 @@ getOrderList(year, month,day) {
             per.push(e.currentTarget.dataset.index)/*把当中选中时间段加入集合*/
             that.data.time_period.push(e.currentTarget.dataset.timesid);
           }
-          // if (per[per.length - 1] - Number(e.currentTarget.dataset.index) == 1 || per[per.length - 1] - Number(e.currentTarget.dataset.index) == -1) {/*点击新时间段*/
-          // }
-          //  else if (e.currentTarget.dataset.index == per[0] || e.currentTarget.dataset.index == per[per.length - 1]) {
-
-          //    that.data.timesList[index].isSelect = 0;
-          //    per.pop(e.currentTarget.dataset.index);
-          //    that.data.time_period.pop(e.currentTarget.dataset.timesid);
-          //  }
-          // else if (per.indexOf(Number(e.currentTarget.dataset.index))>-1){/*当前点击的时间段如果是刚刚已点过的*/
-          // console.log('aaa')
-          //   for (var i = 0; i < per.length; i++) {
-          //     that.data.timesList[i].isSelect = 0;/*样式改变 未被选中*/
-          //   }
-          //   per = [];
-          //   that.data.time_period = [];
-          // }
-          // else {/*第多次点击但不连续*/
-          //   for (var i = 0; i < that.data.timesList.length; i++) {
-          //     that.data.timesList[i].isSelect = 0;
-          //   }/*把所有的样式清空*/
-          //   that.data.timesList[index].isSelect = 1;/*当前样式改变*/
-          //   wx.showToast({
-          //     title: '多选时段请连续～',
-          //     icon: 'none'
-          //   })
-          //   per = [];/*清空选中时间段的集合*/
-          //   that.data.time_period = [];
-          //   per.push(e.currentTarget.dataset.index)/*把当中选中时间段加入集合*/
-          //   that.data.time_period.push(e.currentTarget.dataset.timesid);
-          // }
         }
       }
     that.setData({
@@ -445,9 +410,6 @@ getOrderList(year, month,day) {
     that.setData({
       theme:e.detail.value
     })
-  },
-  scrollDown(){
-    
   },
   /*退出*/
   exit(){
