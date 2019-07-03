@@ -22,8 +22,8 @@
           <text class="item-title">{{item.name}}</text>
           <text class="item-describe">{{item.description}}</text>
           <text class="item-local">地址：{{item.path}}</text>
-          <!-- <text class="item-order-btn">已关闭</text> -->
-          <button class="item-order" bindtap="navTo" data-roomid="{{item.roomId}}" data-roomname='{{item.name}}'>预约</button>
+          <text class="item-order-btn" wx:if="{{item.status==2}}">已关闭</text>
+          <button class="item-order" wx:if="{{item.status==0}}" bindtap="navTo" data-roomid="{{item.roomId}}" data-roomname='{{item.name}}'>预约</button>
         </view>
       </view>
     </scroll-view>

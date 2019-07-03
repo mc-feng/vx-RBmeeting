@@ -27,12 +27,14 @@
   </view>
   <scroll-view scroll-y='true' style='height:810rpx;' class="scroll-box">
     <checkbox-group class="date-right clearfix">
-    <checkbox wx:for="{{timesList}}" wx:key="{{index}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}} " bindtap="{{item.canSelect==true?'choose':'chooseEd'}}" data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}" data-selected="{{item.selected}}">
+    <checkbox wx:for="{{timesList}}" wx:key="{{index}}" class="date-right-item {{item.canSelect==true?'choose-ok':'choose-no'}} {{item.isSelect==1?'choose-active':''}} "
+      bindtap="chooseTime"  data-index="{{index}}" data-timesId="{{item.timesId}}" value="{{item.id}}" data-period="{{item.startTime}}~{{item.endTime}}" data-status="{{item.status}}">
     <view class="time-middle">
       <image src="../../img/yued.png" class='yue' wx:if="{{item.canSelect==false}}"></image>
       <image src="../../img/yu.png" class='yue' wx:if="{{(item.canSelect==true)&&(item.isSelect==0)}}"></image>
       <image src="../../img/yub.png" class='yue' wx:if="{{(item.isSelect==1)&&(item.canSelect==true)}}"></image>
     <text>{{item.startTime}}~{{item.endTime}}</text>
+
     </view>
     </checkbox>
   </checkbox-group>
@@ -149,6 +151,21 @@
         <text class="tips-toast-text">{{phone}}</text>
       </view>
       <button class="close-btn" bindtap="yuyueEd">关闭</button>
+    </form>
+  </view>
+</vtoast>
+<vtoast flow="{{close}}">
+  <view class="msg-box yuyue-box">
+    <view class="tips">
+        <view class="tips-box">
+          <image src="../../img/cuowu.png"></image>
+        </view>
+    </view>
+    <form class="msg-form">
+      <view class="tips-toast-close">
+        <text class="tips-middle">该时段已被关闭</text>
+      </view>
+      <button class="close-btn" bindtap="close">关闭</button>
     </form>
   </view>
 </vtoast>

@@ -40,13 +40,20 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "预约页面",
 					"pathName": "pages/order/index",
 					"query": "roomId=1&&roomName=圆桌骑士",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "历史记录",
+					"pathName": "pages/personal/history/history",
+					"query": "openId=\"oV0mB4qCVOnZctUi3b-EUA33XREw\"&status=0",
 					"scene": null
 				}
 			]

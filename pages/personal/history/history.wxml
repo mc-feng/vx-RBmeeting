@@ -22,15 +22,18 @@
             <view class='yuyue-top-font'>
             <text>{{item.path}}</text><text></text>
           </view>
+          <view class='yuyue-top-font3'>
+            <text>会议主题：</text><text></text>
+          </view>
           <view class='yuyue-top-font2'>
             <text>{{item.orderDate}}</text><text>({{item.week}})</text><text>{{item.startTime}}---{{item.endTime}}</text>
           </view>
             <view class='yuyue-state'>{{item.status==1?"已失效":"已取消"}}</view>
           </view>
-          <view class='yuyue-bottm'>
+          <!-- <view class='yuyue-bottm'>
             <icon class="iconfont bao"/>
             <text>请准时到达，如有问题请联系我们</text>
-          </view>
+          </view> -->
       </view>
     </view>
     </view>

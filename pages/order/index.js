@@ -15,6 +15,7 @@ Page({
     wrong:'',
     yuyue:'',
     complete:'',
+    close:'',
     dayList:[],
     index:0,
     weekend:'',
@@ -103,18 +104,15 @@ Page({
   /*点击提示已被预约过*/
   chooseEd(e){
     var that = this;
-    for (var i = 0; i < that.data.orderList.length;i++){
-      if (e.currentTarget.dataset.timesid == that.data.orderList[i].timesId ){
+      for (var i = 0; i < that.data.orderList.length; i++) {
+        if (e.currentTarget.dataset.timesid == that.data.orderList[i].timesId) {
           that.setData({
             timeUserName: that.data.orderList[i].userName,
             phone: that.data.orderList[i].phone,
           })
           that.yuyueEd();
-      }else{
-
+        } else {}
       }
-    }
-    
   },
   /*获取当前日期的已预约列表*/
   getOrderList(year, month,day) {
@@ -146,6 +144,7 @@ Page({
           orderList: res.data
         })
         for (var n = 0; n < that.data.timesList.length; n++) {
+
           var timestamp1 = new Date().getTime();
           if (year == year_s && month == month_s && day == day_s) {  /*如果是当前日期则判断过时*/
             
@@ -157,20 +156,35 @@ Page({
             var timestamp2 = new Date(q).getTime();
             if ((timestamp1 - timestamp2) > 0) {
               that.data.timesList[n].canSelect = false;
+              that.data.timesList[n].status = 1;
             }
           }
         }
         that.setData({
           timesList: that.data.timesList
         })
-        if (that.data.orderList.length==0){
+        if (that.data.orderList.length==0){ 
 
         }else{
           for (var i = 0; i < that.data.orderList.length;i++){
             for (var j = 0; j < that.data.timesList.length; j++) {
               if (that.data.orderList[i].timesId == that.data.timesList[j].timesId){
-                that.data.timesList[j].canSelect = false;
-                that.data.timesList[j].selected = false;
+                if (that.data.orderList[i].status==0){/*未完成预约*/
+                  that.data.timesList[j].status = 0;
+                  that.data.timesList[j].canSelect = false;/*已被预约*/
+                } else if (that.data.orderList[i].status == 1){/*完成预约、已失效预约*/
+                  that.data.timesList[j].status = 1;
+                  that.data.timesList[j].canSelect = false;/*已被预约*/
+                } else if (that.data.orderList[i].status == 2){/*取消的预约*/
+                  that.data.timesList[j].status = 2;
+                } else if (that.data.orderList[i].status == 3) {/*关闭的时段*/
+                  that.data.timesList[j].status = 3;
+                  that.data.timesList[j].canSelect = false;/*已被预约*/
+                }else{
+                  
+                }
+              }else{
+                
               }
             }
           }
@@ -178,10 +192,32 @@ Page({
           that.setData({
             timesList: that.data.timesList
           })
-          
+          console.log(that.data.timesList)
         }
       }
     })
+  },
+  chooseTime(e){
+    var that = this;
+    if (e.currentTarget.dataset.status==0){/*已被预约未完成预约*/
+      for (var i = 0; i < that.data.orderList.length; i++) {
+        if (e.currentTarget.dataset.timesid == that.data.orderList[i].timesId) {
+          that.setData({
+            timeUserName: that.data.orderList[i].userName,
+            phone: that.data.orderList[i].phone,
+          })
+          that.yuyueEd();
+        } else { }
+      }
+    } else if (e.currentTarget.dataset.status == 1){/*完成预约/已失效预约*/
+      
+    } else if (e.currentTarget.dataset.status == 2){/*取消的预约*/
+      that.choose(e);
+    } else if (e.currentTarget.dataset.status == 3) {/*关闭的时段*/
+      that.close();
+    } else {/*未被预约，可预约*/
+      that.choose(e);
+    }
   },
   /*选中某/某些时间段*/
   choose(e){
@@ -327,6 +363,12 @@ Page({
     var that = this;
     that.setData({
       complete: !this.data.complete
+    })
+  },
+  close(){
+    var that = this;
+    that.setData({
+      close: !this.data.close
     })
   },
   yuyueEd(){

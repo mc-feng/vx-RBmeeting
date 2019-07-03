@@ -22,6 +22,9 @@
           <view class='yuyue-top-font'>
             <text>{{item.path}}</text><text></text>
           </view>
+          <view class='yuyue-top-font3'>
+            <text>会议主题：</text><text></text>
+          </view>
           <view class='yuyue-top-font2'>
             <text>{{item.orderDate}}</text><text>({{item.week}})</text><text>{{item.startTime}}---{{item.endTime}}</text>
           </view>

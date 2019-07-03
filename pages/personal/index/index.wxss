@@ -125,7 +125,7 @@ page{
 }
 .yuyue-item-warp{
   position: relative;
-  height: 212rpx;
+  height: 280rpx;
   margin-bottom: 26rpx;
 }
 .yuyue-item{
@@ -133,7 +133,7 @@ page{
   background: #FFFFFF;
   border: 2rpx solid #F1F2FB;
   border-radius: 30rpx;
-  height: 212rpx;
+  height: 280rpx;
   overflow: hidden;
   position: absolute;
   z-index: 3;
@@ -148,6 +148,9 @@ page{
 .yuyue-top-font{
   margin-left: 54rpx;
   margin-top: 22rpx;
+}
+.yuyue-top-font3{
+  margin:10rpx 0 10rpx 54rpx;
 }
 .yuyue-top-font2{
   margin-left: 54rpx;
