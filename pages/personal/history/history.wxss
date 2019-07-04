@@ -51,7 +51,7 @@ page{
 }
 .yuyue-item-warp{
   position: relative;
-  height: 212rpx;
+  /* height: 212rpx; */
   margin-bottom: 26rpx;
 }
 .yuyue-item{
@@ -59,9 +59,9 @@ page{
   background: #FFFFFF;
   border: 2rpx solid #F1F2FB;
   border-radius: 30rpx;
-  height: 212rpx;
+  /* height: 212rpx; */
   overflow: hidden;
-  position: absolute;
+  /* position: absolute; */
   z-index: 3;
   transition: left 0.2s ease-in-out;
 }
@@ -135,4 +135,12 @@ page{
   font-size: 34rpx;
   margin-top: 40rpx;
   color: #2B3C6A;
+}
+.yuyue-top-font3 text{
+  display:block;
+  float:left;
+}
+.yuyue-theme{
+  width:360rpx;
+  
 }

@@ -16,14 +16,14 @@
     <icon class="iconfont down"/>
   </view>
   <view class='item-content'>
-   <view class='yuyue-item-warp' wx:for="{{result}}"  wx:key="{{index}}"> 
+   <view class='yuyue-item-warp clearfix' wx:for="{{result}}"  wx:key="{{index}}" style="height:{{item.height}}px"> 
     <view class='yuyue-item' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}">
         <view class='yuyue-top'>
           <view class='yuyue-top-font'>
-            <text>{{item.path}}</text><text></text>
+            <text>{{item.path}}{{item.name}}</text><text></text>
           </view>
-          <view class='yuyue-top-font3'>
-            <text>会议主题：</text><text></text>
+          <view class='yuyue-top-font3 clearfix'>
+            <text>会议主题：</text><text class="yuyue-theme">{{item.theme}}</text>
           </view>
           <view class='yuyue-top-font2'>
             <text>{{item.orderDate}}</text><text>({{item.week}})</text><text>{{item.startTime}}---{{item.endTime}}</text>
@@ -35,7 +35,7 @@
           <text>请准时到达，如有问题请联系我们</text>
         </view>
      </view>
-     <view class='yuyue-delate' bindtap='show'>
+     <view class='yuyue-delate' bindtap='show'  style="height:{{item.height}}px">
        <view class='delate-font'>
          <view class='yuyue-delate-warp'>
            <icon class="iconfont quxiao"/>

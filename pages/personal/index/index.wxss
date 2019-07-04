@@ -125,7 +125,6 @@ page{
 }
 .yuyue-item-warp{
   position: relative;
-  height: 280rpx;
   margin-bottom: 26rpx;
 }
 .yuyue-item{
@@ -133,7 +132,6 @@ page{
   background: #FFFFFF;
   border: 2rpx solid #F1F2FB;
   border-radius: 30rpx;
-  height: 280rpx;
   overflow: hidden;
   position: absolute;
   z-index: 3;
@@ -182,7 +180,6 @@ page{
 }
 /* 预约删除样式 */
 .yuyue-delate{
-  height: 212rpx;
   width: 160rpx;
   background:#949494;
   display: flex;
@@ -297,5 +294,15 @@ button::after {
 }
  /* 历史记录向下距离*/
  .hisM{
-   margin-bottom: 60rpx
+   margin-bottom: 60rpx;
  }
+ .yuyue-top-font3 text{
+  display:block;
+  float:left;
+}
+.yuyue-theme{
+  width:360rpx;
+  /* overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis; */
+}

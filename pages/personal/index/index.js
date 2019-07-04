@@ -64,9 +64,18 @@ Page({
         status: 0
       },
       success(res) {
+        var query = wx.createSelectorQuery();
         that.setData({
           result: res.data
         })
+        query.selectAll('.yuyue-item').boundingClientRect(function (rect) {
+          res.data.map((item, index) => {
+            item.height = rect[index].height
+          })
+          that.setData({
+            result: res.data
+          })
+        }).exec()
         console.log(res)
       },
       fail(err) {
